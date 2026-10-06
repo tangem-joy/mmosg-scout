@@ -1366,7 +1366,10 @@
             /* --- ২. ভর্তি ফরম ও ডায়নামিক ক্লাস হ্যান্ডলিং --- */
             const form = document.getElementById('inlineRegistrationForm');
             if (!form) return;
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCLeC9kAeyqpO5R3By-XBwODWGfZRqf-vxZDoaz7eqKPCYcDxDGNNXoQZXIKiWwwjTcw/exec';
+            
+            // আপনার সক্রিয় করা গুগল অ্যাপস স্ক্রিপ্ট ওয়েব অ্যাপ URL
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPgrPxLaisifOeBkRIiW4Dfra8gENmdzC8cQSfZGBZLxvILLrCU8EOWPeQcMBO3WCmoA/exec';
+            
             const phoneRegex = /^01[3-9]\d{8}$/;
             const status = document.getElementById('inlineFormStatus');
             const submitBtn = document.getElementById('inlineSubmitBtn');
@@ -1507,15 +1510,23 @@
                 submitBtn.disabled = true;
                 submitBtn.style.opacity = '.7';
                 submitBtn.textContent = '⏳ তথ্য জমা হচ্ছে...';
+
                 try {
+                    const formBody = new URLSearchParams();
+                    for (const key in data) {
+                        formBody.append(key, data[key]);
+                    }
+
                     await fetch(SCRIPT_URL, {
                         method: 'POST',
                         mode: 'no-cors',
+                        cache: 'no-cache',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                         },
-                        body: new URLSearchParams(data)
+                        body: formBody.toString()
                     });
+
                     form.reset();
                     classSelect.innerHTML = '<option value="" selected disabled>-- আগে শাখা নির্বাচন করুন --</option>';
                     subjectGroupWrap.style.display = 'none';
