@@ -372,10 +372,29 @@
             margin: 0
         }
 
-        /* টিম কার্ড */
+        /* টিম ক্যাটাগরি ও কার্ড */
+        .team-category {
+            margin-bottom: 34px
+        }
+
+        .team-category:last-child {
+            margin-bottom: 0
+        }
+
+        .category-title {
+            font-size: 20px;
+            color: var(--green-dark);
+            margin: 0 0 16px;
+            border-left: 4px solid var(--green);
+            padding-left: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
         .team {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px
         }
 
@@ -871,10 +890,6 @@
                 position: static
             }
 
-            .team {
-                grid-template-columns: 1fr 1fr
-            }
-
             .hero {
                 padding-top: 65px
             }
@@ -1017,59 +1032,75 @@
         <section id="team" class="about">
             <div class="container">
                 <div class="section-head">
-                    <span>নেতৃত্ব</span>
-                    <h2>গ্রুপ নেতৃত্ব ও সিনিয়র রোভার মেট</h2>
+                    <span>নেতৃত্ব ও পরিচালনা পর্ষদ</span>
+                    <h2>গ্রুপ প্রশাসন ও ইউনিট নেতৃত্ব</h2>
                     <p>ব্যক্তিদের কার্ডে ক্লিক করে তাঁদের স্কাউটিং যাত্রা ও অভিজ্ঞতার বিস্তারিত দেখুন।</p>
                 </div>
-                <div class="team">
 
-                    <div class="person" data-person="lutfor">
-                        <div class="avatar">লু</div>
-                        <h3>প্রফেসর মোঃ লুৎফর রহমান</h3>
-                        <p>গ্রুপ সভাপতি</p>
-                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-                    </div>
-
-                    <div class="person" data-person="saiful">
-                        <div class="avatar">
-                            <img src="গ্রুপ%20সম্পাদক.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
+                <!-- ১. গ্রুপ প্রশাসন -->
+                <div class="team-category">
+                    <h3 class="category-title">১. গ্রুপ প্রশাসন</h3>
+                    <div class="team">
+                        <div class="person" data-person="lutfor">
+                            <div class="avatar">লু</div>
+                            <h3>প্রফেসর মোঃ লুৎফর রহমান</h3>
+                            <p>গ্রুপ সভাপতি</p>
+                            <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
                         </div>
-                        <h3>মো: সাইফুল ইসলাম - এএলটি</h3>
-                        <p>গ্রুপ সম্পাদক</p>
-                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-                    </div>
 
-                    <div class="person" data-person="faruk">
-                        <div class="avatar">ফা</div>
-                        <h3>ফারুক হোসেন</h3>
-                        <p>রোভার স্কাউট লিডার<br>৮৪ নং ইউনিট</p>
-                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-                    </div>
-
-                    <div class="person" data-person="morsalina">
-                        <div class="avatar">মো</div>
-                        <h3>মোরসালিনা আক্তার</h3>
-                        <p>রোভার স্কাউট লিডার<br>৮৫ নং ইউনিট (গার্ল)</p>
-                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-                    </div>
-
-                    <div class="person" data-person="tanjim">
-                        <div class="avatar">
-                            <img src="সিনিয়র%20রোভার%20মেট%20-%20ছেলে.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
+                        <div class="person" data-person="saiful">
+                            <div class="avatar">
+                                <img src="গ্রুপ%20সম্পাদক.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
+                            </div>
+                            <h3>মো: সাইফুল ইসলাম - এএলটি</h3>
+                            <p>গ্রুপ সম্পাদক</p>
+                            <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
                         </div>
-                        <h3>তানজীম তালুকদার জয়</h3>
-                        <p>সিনিয়র রোভার মেট<br>৮৪ নং ইউনিট</p>
-                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
                     </div>
-
-                    <div class="person" data-person="tamanna">
-                        <div class="avatar">তা</div>
-                        <h3>মোছাঃ তামান্না খাতুন</h3>
-                        <p>সিনিয়র রোভার মেট<br>৮৫ নং ইউনিট (গার্ল)</p>
-                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-                    </div>
-
                 </div>
+
+                <!-- ২. রোভার স্কাউট লিডার (RSL) -->
+                <div class="team-category">
+                    <h3 class="category-title">২. রোভার স্কাউট লিডার (RSL)</h3>
+                    <div class="team">
+                        <div class="person" data-person="faruk">
+                            <div class="avatar">ফা</div>
+                            <h3>ফারুক হোসেন</h3>
+                            <p>রোভার স্কাউট লিডার<br>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</p>
+                            <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                        </div>
+
+                        <div class="person" data-person="morsalina">
+                            <div class="avatar">মো</div>
+                            <h3>মোরসালিনা আক্তার</h3>
+                            <p>রোভার স্কাউট লিডার<br>৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)</p>
+                            <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ৩. সিনিয়র রোভার মেট (SRM) -->
+                <div class="team-category">
+                    <h3 class="category-title">৩. সিনিয়র রোভার মেট (SRM)</h3>
+                    <div class="team">
+                        <div class="person" data-person="tanjim">
+                            <div class="avatar">
+                                <img src="সিনিয়র%20রোভার%20মেট%20-%20ছেলে.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
+                            </div>
+                            <h3>তানজীম তালুকদার জয়</h3>
+                            <p>সিনিয়র রোভার মেট<br>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</p>
+                            <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                        </div>
+
+                        <div class="person" data-person="tamanna">
+                            <div class="avatar">তা</div>
+                            <h3>মোছাঃ তামান্না খাতুন</h3>
+                            <p>সিনিয়র রোভার মেট<br>৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)</p>
+                            <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -1110,7 +1141,7 @@
                             <div class="helpline-box">
                                 <strong>তানজীম তালুকদার জয়</strong>
                                 <span>সিনিয়র রোভার মেট</span>
-                                <span>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</span>
+                                <span>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</span>
                                 <a class="helpline-whatsapp" href="https://wa.me/8801595306172?text=স্কাউটিং%20ভর্তি%20সংক্রান্ত%20তথ্যের%20জন্য%20যোগাযোগ%20করছি" target="_blank" rel="noopener noreferrer">
                                     <span>💬 WhatsApp : 01595306172</span>
                                 </a>
@@ -1226,7 +1257,7 @@
                     <div class="contact-card">
                         <div class="contact-item">
                             <div class="contact-icon">📱</div>
-                            <div><b>সিনিয়র রোভার মেট <br>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b><span>তানজীম তালুকদার জয় · 01595306172</span></div>
+                            <div><b>সিনিয়র রোভার মেট <br>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b><span>তানজীম তালুকদার জয় · 01595306172</span></div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📝</div>
@@ -1267,7 +1298,7 @@
                 },
                 faruk: {
                     name: 'ফারুক হোসেন',
-                    role: 'রোভার স্কাউট লিডার — ৮৪ নং ইউনিট',
+                    role: 'রোভার স্কাউট লিডার — ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
                     journey: [
                         'রোভার স্কাউট লিডার, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
                         'রোভার স্কাউট শাখায় স্কিল কোর্স (Skill Course) সফলভাবে সম্পন্ন'
@@ -1275,7 +1306,7 @@
                 },
                 morsalina: {
                     name: 'মোরসালিনা আক্তার',
-                    role: 'রোভার স্কাউট লিডার — ৮৫ নং ইউনিট (গার্ল)',
+                    role: 'রোভার স্কাউট লিডার — ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
                     journey: [
                         'রোভার স্কাউট লিডার, ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
                         'রোভার স্কাউট শাখায় স্কিল কোর্স (Skill Course) সফলভাবে সম্পন্ন'
@@ -1283,7 +1314,7 @@
                 },
                 tanjim: {
                     name: 'তানজীম তালুকদার জয়',
-                    role: 'সিনিয়র রোভার মেট (SRM) — ৮৪ নং ইউনিট',
+                    role: 'সিনিয়র রোভার মেট (SRM) — ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
                     journey: [
                         'সিনিয়র রোভার মেট, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
                         'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
@@ -1292,7 +1323,7 @@
                 },
                 tamanna: {
                     name: 'মোছাঃ তামান্না খাতুন',
-                    role: 'সিনিয়র রোভার মেট (SRM) — ৮৫ নং ইউনিট (গার্ল)',
+                    role: 'সিনিয়র রোভার মেট (SRM) — ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
                     journey: [
                         'সিনিয়র রোভার মেট, ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
                         'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
