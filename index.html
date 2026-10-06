@@ -21,7 +21,8 @@
     header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
     .nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(145deg,var(--green),var(--green-dark));color:#fff;display:grid;place-items:center;font-size:23px;box-shadow:0 8px 22px rgba(8,120,63,.25)}
+    .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(145deg,var(--green),var(--green-dark));color:#fff;display:grid;place-items:center;font-size:23px;box-shadow:0 8px 22px rgba(8,120,63,.25);overflow:hidden}
+    .mark img{width:100%;height:100%;object-fit:cover}
     .brand small{display:block;color:var(--muted);font:500 11px/1.2 Inter,sans-serif;letter-spacing:.3px}
     .brand strong{font-size:17px}
     nav{display:flex;align-items:center;gap:20px;font-weight:600}
@@ -41,7 +42,8 @@
     .btn-primary:hover{transform:translateY(-2px);background:var(--green-dark)}
     .btn-light{background:#fff;border-color:var(--line);color:var(--green-dark)}
     .hero-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow)}
-    .hero-card .crest{height:115px;width:115px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);border:8px solid #fff;box-shadow:0 0 0 1px var(--line);font-size:55px}
+    .hero-card .crest{height:115px;width:115px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);border:8px solid #fff;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+    .hero-card .crest img{width:100%;height:100%;object-fit:cover}
     .hero-card h3{text-align:center;margin:0 0 6px;font-size:22px}
     .hero-card p{text-align:center;color:var(--muted);margin:0}
     .mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
@@ -63,11 +65,31 @@
     .branch .num{font:800 13px Inter,sans-serif;color:var(--green);letter-spacing:.5px}
     .branch h3{font-size:23px;margin:7px 0}
     .branch p{color:var(--muted);margin:0}
-    .team{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-    .person{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;text-align:center;box-shadow:0 9px 28px rgba(5,64,34,.05)}
-    .avatar{width:68px;height:68px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);color:var(--green-dark);font-weight:800;font-size:24px}
-    .person h3{font-size:18px;margin:0 0 3px}
-    .person p{font-size:14px;color:var(--muted);margin:0}
+
+    /* টিম কার্ড */
+    .team{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
+    .person{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 20px;text-align:center;box-shadow:0 9px 28px rgba(5,64,34,.05);cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;position:relative}
+    .person:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(8,120,63,.15);border-color:var(--green)}
+    .avatar{width:70px;height:70px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);color:var(--green-dark);font-weight:800;font-size:24px;border:2px solid #e0f2e6;overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    .person h3{font-size:18px;margin:0 0 5px}
+    .person p{font-size:14px;color:var(--muted);margin:0;line-height:1.5}
+    .person .view-profile{display:inline-block;margin-top:12px;font-size:12px;color:var(--green);font-weight:700;background:var(--green-soft);padding:4px 12px;border-radius:20px}
+
+    /* স্কাউটিং যাত্রা পপআপ */
+    .scout-modal{display:none;position:fixed;inset:0;background:rgba(19,37,27,.6);backdrop-filter:blur(6px);z-index:9999;place-items:center;padding:16px;opacity:0;transition:opacity .25s ease}
+    .scout-modal.show{display:grid;opacity:1}
+    .modal-box{background:#fff;width:min(520px,100%);border-radius:24px;padding:32px 28px;box-shadow:0 25px 60px rgba(0,0,0,.25);position:relative;transform:scale(.95);transition:transform .25s ease}
+    .scout-modal.show .modal-box{transform:scale(1)}
+    .modal-close{position:absolute;top:18px;right:18px;background:#f0f5f2;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:18px;color:#43544b;transition:.2s}
+    .modal-close:hover{background:#d7e8dd;color:#000}
+    .modal-badge{display:inline-block;font-size:12px;font-weight:700;color:var(--green);background:var(--green-soft);padding:4px 12px;border-radius:999px;margin-bottom:8px}
+    .modal-box h3{font-size:22px;margin:0 0 4px;color:var(--ink)}
+    .modal-box .sub-role{font-size:14px;color:var(--muted);font-weight:600;margin:0 0 20px}
+    .journey-timeline{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .journey-timeline li{display:flex;align-items:flex-start;gap:12px;background:#f7fbf8;padding:12px 14px;border-radius:12px;border:1px solid #e6f0e9;font-size:14.5px;color:#2c3e34}
+    .journey-timeline li span.icon{color:var(--green);font-size:18px;line-height:1.2}
+
     .contact{background:var(--green-dark);color:#fff}
     .contact .section-head p{color:#cce5d5}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
@@ -131,10 +153,12 @@
 <header>
   <div class="container nav">
     <a class="brand" href="#home">
-      <div class="mark">⚜</div>
+      <div class="mark">
+        <img src="Group%20Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
+      </div>
       <div>
-        <small>বাংলাদেশ স্কাউট রোভার অঞ্চল</small>
-        <strong>ময়মনসিংহ মেট্রোপলিটন</strong>
+        <small>বাংলাদেশ স্কাউট</small>
+        <strong>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</strong>
       </div>
     </a>
     <nav>
@@ -150,7 +174,7 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow"><i class="dot"></i> বাংলাদেশ স্কাউট, ময়মনসিংহ জেলা রোভার</span>
+        <span class="eyebrow"><i class="dot"></i> বাংলাদেশ স্কাউট, ময়মনসিংহ অঞ্চল ও বাংলাদেশ স্কাউট রোভার অঞ্চল</span>
         <h1>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</h1>
         <p>রোভার স্কাউটদের দক্ষতা, নেতৃত্ব, সেবা ও মানবিক মূল্যবোধ বিকাশে নিবেদিত একটি সংগঠিত স্কাউটিং প্ল্যাটফর্ম।</p>
         <div class="actions">
@@ -160,12 +184,14 @@
       </div>
 
       <div class="hero-card">
-        <div class="crest">⚜</div>
-        <h3>দুইটি নিবন্ধিত চালান শাখা</h3>
+        <div class="crest">
+          <img src="Group%20Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
+        </div>
+        <h3> রোভার স্কাউট শাখার দুইটি নিবন্ধিত ইউনিট রয়েছে </h3>
         <p>ছেলে ও মেয়ে রোভার সদস্যদের জন্য পৃথক শাখা</p>
         <div class="mini-stats">
           <div class="stat"><b>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ </b><span>ছেলে সদস্যদের জন্য </span></div>
-          <div class="stat"><b>৮৫ ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b><span>মেয়ে সদস্যদের জন্য </span></div>
+          <div class="stat"><b>৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল) </b><span>মেয়ে সদস্যদের জন্য </span></div>
         </div>
       </div>
     </div>
@@ -176,12 +202,12 @@
       <div class="section-head">
         <span>আমাদের পরিচিতি</span>
         <h2>স্কাউটিং থেকে নেতৃত্ব, নেতৃত্ব থেকে সেবা</h2>
-        <p>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ বাংলাদেশ স্কাউট রোভার অঞ্চলের আওতাধীন এবং বাংলাদেশ স্কাউট, ময়মনসিংহ জেলা রোভারের পরিচালনায় কার্যক্রম পরিচালনা করে।</p>
+        <p>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপের রোভার ইউনিট দুইটি বাংলাদেশ স্কাউটস, রোভার অঞ্চলের আওতাধীন এবং বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভারের তত্তাবধানে রোভার কার্যক্রম পরিচালনা করে।</p>
       </div>
       <div class="about-grid">
         <div class="info-card">
           <h3>সংগঠনের কাঠামো</h3>
-          <p>গ্রুপটির রোভার শাখার দুইটি ইউনিট চলমান  রয়েছে—৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ এবং ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)। প্রথমটি ছেলে রোভার সদস্যদের জন্য এবং দ্বিতীয়টি মেয়ে সদস্যদের জন্য নিবন্ধনকৃত।</p>
+          <p>গ্রুপটির রোভার শাখার দুইটি নিবন্ধিত ইউনিট চলমান রয়েছে — ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ এবং ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)। প্রথমটি ছেলে রোভার সদস্যদের জন্য এবং দ্বিতীয়টি মেয়ে সদস্যদের জন্য নিবন্ধনকৃত।</p>
         </div>
         <div class="info-card">
           <h3>আমাদের লক্ষ্য</h3>
@@ -195,80 +221,148 @@
     <div class="container">
       <div class="section-head">
         <span>আমাদের শাখা</span>
-        <h2>দুই ইউনিট, এক স্কাউটিং পরিবার</h2>
-        <p>দুইটি নিবন্ধিত ইউনিটের নিজস্ব রোভার নেতৃত্ব রয়েছে।</p>
+        <h2>একটি শাখা, দুইটি ইউনিট, একটি স্কাউটিং পরিবার</h2>
+        <p>দুইটি নিবন্ধিত রোভার ইউনিটের নিজস্ব রোভার নেতৃত্ব রয়েছে।</p>
       </div>
       <div class="branches">
         <div class="branch">
-          <div class="num">GROUP NO. 84</div>
-          <h3>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</h3>
+          <div class="num">রোভার ইউনিট - ০১</div>
+          <h3> ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</h3>
           <p>ছেলে রোভার সদস্যদের জন্য নিবন্ধনকৃত শাখা।<br><br><b>রোভার স্কাউট লিডার:</b> ফারুক হোসেন</p>
         </div>
         <div class="branch">
-          <div class="num">GROUP NO. 85</div>
-          <h3>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)</h3>
+          <div class="num">রোভার ইউনিট - ০২</div>
+          <h3> ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)</h3>
           <p>মেয়ে রোভার সদস্যদের জন্য নিবন্ধনকৃত শাখা।<br><br><b>রোভার স্কাউট লিডার:</b> মোরসালিনা আক্তার</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- নেতৃত্ব সেকশন -->
   <section id="team" class="about">
     <div class="container">
       <div class="section-head">
         <span>নেতৃত্ব</span>
         <h2>গ্রুপ নেতৃত্ব ও সিনিয়র রোভার মেট</h2>
-        <p>বর্তমান প্রদত্ত তথ্য অনুযায়ী গ্রুপের দায়িত্বশীল ব্যক্তিবর্গ।</p>
+        <p>ব্যক্তিদের কার্ডে ক্লিক করে তাঁদের স্কাউটিং যাত্রা ও অভিজ্ঞতার বিস্তারিত দেখুন।</p>
       </div>
       <div class="team">
-        <div class="person"><div class="avatar">আ</div><h3>প্রফেসর মোঃ লুৎফর রহমান</h3><p>গ্রুপ সভাপতি</p></div>
-        <div class="person"><div class="avatar">স</div><h3>মো: সাইফুল ইসলাম - এএলটি</h3><p>গ্রুপ সম্পাদক</p></div>
-        <div class="person"><div class="avatar">ফ</div><h3>ফারুক হোসেন</h3><p>রোভার স্কাউট লিডার — ছেলে</p></div>
-        <div class="person"><div class="avatar">ম</div><h3>মোরসালিনা আক্তার</h3><p>রোভার স্কাউট লিডার — মেয়ে</p></div>
-        <div class="person"><div class="avatar">জ</div><h3>তানজীম তালুকদার জয়</h3><p>সিনিয়র রোভার মেট — ছেলে<br>01595306172</p></div>
-        <div class="person"><div class="avatar">ত</div><h3>মোছাঃ তামান্না খাতুন</h3><p>সিনিয়র রোভার মেট — মেয়ে</p></div>
+        
+        <div class="person" data-person="lutfor">
+          <div class="avatar">লু</div>
+          <h3>প্রফেসর মোঃ লুৎফর রহমান</h3>
+          <p>গ্রুপ সভাপতি</p>
+          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+        </div>
+
+        <div class="person" data-person="saiful">
+          <div class="avatar">
+            <img src="গ্রুপ%20সম্পাদক.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
+          </div>
+          <h3>মো: সাইফুল ইসলাম - এএলটি</h3>
+          <p>গ্রুপ সম্পাদক</p>
+          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+        </div>
+
+        <div class="person" data-person="faruk">
+          <div class="avatar">ফা</div>
+          <h3>ফারুক হোসেন</h3>
+          <p>রোভার স্কাউট লিডার<br>৮৪ নং ইউনিট</p>
+          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+        </div>
+
+        <div class="person" data-person="morsalina">
+          <div class="avatar">মো</div>
+          <h3>মোরসালিনা আক্তার</h3>
+          <p>রোভার স্কাউট লিডার<br>৮৫ নং ইউনিট (গার্ল)</p>
+          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+        </div>
+
+        <div class="person" data-person="tanjim">
+          <div class="avatar">
+            <img src="সিনিয়র%20রোভার%20মেট%20-%20ছেলে.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
+          </div>
+          <h3>তানজীম তালুকদার জয়</h3>
+          <p>সিনিয়র রোভার মেট<br>৮৪ নং ইউনিট</p>
+          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+        </div>
+
+        <div class="person" data-person="tamanna">
+          <div class="avatar">তা</div>
+          <h3>মোছাঃ তামান্না খাতুন</h3>
+          <p>সিনিয়র রোভার মেট<br>৮৫ নং ইউনিট (গার্ল)</p>
+          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+        </div>
+
       </div>
     </div>
   </section>
 
+  <!-- স্কাউটিং প্রোফাইল মডাল -->
+  <div class="scout-modal" id="scoutModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
+      <span class="modal-badge">স্কাউটিং যাত্রা ও বিবরণ</span>
+      <h3 id="modalName">নাম</h3>
+      <p class="sub-role" id="modalRole">পদবি</p>
+      <ul class="journey-timeline" id="modalJourney"></ul>
+    </div>
+  </div>
 
   <section class="apply-section" id="apply">
     <div class="container">
       <div class="section-head">
         <span>অনলাইন ভর্তি</span>
-        <h2>এই ওয়েবসাইট থেকেই আবেদন করুন</h2>
-        <p>অন্য কোনো পেজে যেতে হবে না। নিচের ফরম পূরণ করে নিবন্ধন সম্পন্ন করুন।</p>
+        <h2>আমাদের সাথে যুক্ত হওয়ার জন্য অনলাইনে আবেদন করুন</h2>
+        <p> সাধারণ কিছু তথ্য জমা দিয়ে নিচের ফরম পূরণ করে নিবন্ধন সম্পন্ন করুন। নিবন্ধন সফল হলে গ্রুপের পক্ষ থেকে আপনার সাথে আপনার দেওয়া WhatsApp নম্বর এ যোগাযোগ করবে এবং গ্রুপে যুক্ত করে নিবে। </p>
       </div>
 
       <div class="apply-wrap">
         <div class="apply-info">
-          <span class="tag">🏕️ ২০২৬ ব্যাচ</span>
-          <h3>রোভার স্কাউট পরিবারে যুক্ত হোন</h3>
-          <p>আপনার তথ্য সঠিকভাবে পূরণ করুন। আবেদন জমা হলে তথ্য আমাদের নির্ধারিত রেজিস্ট্রেশন শিটে সংরক্ষিত হবে।</p>
+          <span class="tag">আবেদনের সাধারণ তথ্য সমূহ</span>
+          <h3> স্কাউট সদস্য হিসেবে যুক্ত হোন</h3>
+          <p>আপনার তথ্য সঠিকভাবে পূরণ করুন। আবেদন জমা দিতে কোন সমস্যা হলে বা কোন প্রশ্ন থাকলে সিনিয়র রোভার মেটদের সাথে যোগাযোগ করার জন্য অনুরোধ করা হলো </p>
           <ul class="apply-points">
-            <li><span>✓</span><span>ফরম পূরণ করতে আলাদা ওয়েবসাইটে যেতে হবে না</span></li>
             <li><span>✓</span><span>বাংলাদেশি ১১ ডিজিটের মোবাইল নম্বর প্রয়োজন</span></li>
             <li><span>✓</span><span>স্কাউটিং অভিজ্ঞতা থাকলে সংক্ষেপে লিখতে পারবেন</span></li>
-            <li><span>✓</span><span>ছেলে ও মেয়ে—উভয় শাখার জন্য আবেদন করা যাবে</span></li>
+            <li><span>✓</span><span> ছেলে ও মেয়ে—উভয়-ই আবেদন করতে পারবে</span></li>
+            <li><span>✓</span><span>বর্তমানে রোভার স্কাউট শাখার পাশাপাশি সদস্য সংগ্রহ চলমান আছে।</span></li>
           </ul>
         </div>
 
         <div class="apply-form-card">
           <form id="inlineRegistrationForm" novalidate autocomplete="off">
             <div class="form-grid">
+              
+              <div class="form-group full">
+                <label class="form-label" for="applyBranch">আপনি কোন শাখায় যুক্ত হতে চান? <span class="required">*</span></label>
+                <select class="form-control" id="applyBranch" name="scout_branch" required>
+                  <option value="" selected disabled>-- শাখা নির্বাচন করুন --</option>
+                  <option value="কাব স্কাউট">কাব স্কাউট</option>
+                  <option value="স্কাউট">স্কাউট</option>
+                  <option value="রোভার স্কাউট">রোভার স্কাউট</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <label class="form-label" for="applyDOB">জন্মতারিখ <span class="required">*</span></label>
+                <input class="form-control" id="applyDOB" name="dob" type="date" required>
+              </div>
+
               <div class="form-group">
                 <label class="form-label" for="applyName">নাম <span class="required">*</span></label>
                 <input class="form-control" id="applyName" name="name" type="text" placeholder="আপনার পূর্ণ নাম লিখুন" maxlength="100" required>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="applyMobile">মোবাইল নাম্বার <span class="required">*</span></label>
+                <label class="form-label" for="applyMobile"> অভিভাবকের মোবাইল নম্বর <span class="required">*</span></label>
                 <input class="form-control" id="applyMobile" name="mobile" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" required>
                 <span class="form-hint">বাংলাদেশি মোবাইল নম্বর (১১ ডিজিট)</span>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="applyWhatsapp">WhatsApp Number <span class="required">*</span></label>
+                <label class="form-label" for="applyWhatsapp"> ব্যক্তিগত WhatsApp নম্বর <span class="required">*</span></label>
                 <input class="form-control" id="applyWhatsapp" name="whatsapp" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" required>
               </div>
 
@@ -280,23 +374,13 @@
               <div class="form-group">
                 <label class="form-label" for="applyClass">বর্তমান ক্লাস <span class="required">*</span></label>
                 <select class="form-control" id="applyClass" name="class" required>
-                  <option value="" selected disabled>-- ক্লাস নির্বাচন করুন --</option>
-                  <option value="Class 6">Class 6 (ষষ্ঠ)</option>
-                  <option value="Class 7">Class 7 (সপ্তম)</option>
-                  <option value="Class 8">Class 8 (অষ্টম)</option>
-                  <option value="Class 9">Class 9 (নবম)</option>
-                  <option value="Class 10">Class 10 (দশম)</option>
-                  <option value="Class 11">Class 11 (একাদশ)</option>
-                  <option value="Class 12">Class 12 (দ্বাদশ)</option>
-                  <option value="Diploma / Polytechnic">Diploma / Polytechnic</option>
-                  <option value="University">University (বিশ্ববিদ্যালয়)</option>
-                  <option value="Other">Other (অন্যান্য)</option>
+                  <option value="" selected disabled>-- আগে শাখা নির্বাচন করুন --</option>
                 </select>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" id="subjectGroupWrap" style="display: none;">
                 <label class="form-label" for="applySubject">বিষয় / গ্রুপ</label>
-                <input class="form-control" id="applySubject" name="subject_group" type="text" maxlength="100" placeholder="যেমন: Science, Humanities, Business Studies">
+                <input class="form-control" id="applySubject" name="subject_group" type="text" maxlength="100" placeholder="যেমন: Science, Humanities, Accounting">
                 <span class="form-hint">ঐচ্ছিক</span>
               </div>
 
@@ -338,16 +422,16 @@
     <div class="container">
       <div class="section-head">
         <span>যোগাযোগ</span>
-        <h2>স্কাউটিংয়ের যাত্রায় যুক্ত হোন</h2>
-        <p>নিচের ফরমটি পূরণ করে সরাসরি এই ওয়েবসাইট থেকেই সদস্য হওয়ার জন্য আবেদন করুন।</p>
+        <h2>স্কাউটিংয়ের যাত্রায় যুক্ত হোন আমাদের সাথে</h2>
+        <p>নিচের ফরমটি পূরণ করে সদস্য হওয়ার জন্য আবেদন করুন।</p>
       </div>
       <div class="contact-grid">
         <div class="contact-card">
-          <div class="contact-item"><div class="contact-icon">🏕️</div><div><b>অধিভুক্তি</b><span>বাংলাদেশ স্কাউট রোভার অঞ্চল<br>বাংলাদেশ স্কাউট, ময়মনসিংহ জেলা রোভার</span></div></div>
-          <div class="contact-item"><div class="contact-icon">📋</div><div><b>ভর্তি</b><span>অনলাইন ভর্তি ফরমের মাধ্যমে আবেদন করুন</span></div></div>
+          <div class="contact-item"><div class="contact-icon">🏕️</div><div><b> বাংলাদেশ স্কাউটস এর অধিভুক্তি অঞ্চল সমূহ </b><span>বাংলাদেশ স্কাউট, ময়মনসিংহ অঞ্চল<br>বাংলাদেশ স্কাউট, রোভার অঞ্চল </span></div></div>
+          <div class="contact-item"><div class="contact-icon">📋</div><div><b> সদস্য ভর্তি</b><span> কাব স্কাউট, স্কাউট বা রোভার শাখায় যুক্ত হতে অনলাইন ভর্তি ফরমের মাধ্যমে আবেদন করুন</span></div></div>
         </div>
         <div class="contact-card">
-          <div class="contact-item"><div class="contact-icon">📱</div><div><b>সিনিয়র রোভার মেট — ছেলে</b><span>তানজীম তালুকদার জয় · 01595306172</span></div></div>
+          <div class="contact-item"><div class="contact-icon">📱</div><div><b>সিনিয়র রোভার মেট <br>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b><span>তানজীম তালুকদার জয় · 01595306172</span></div></div>
           <div class="contact-item"><div class="contact-icon">📝</div><div><b>অনলাইন ভর্তি ফরম</b><span><a href="#apply" style="text-decoration:underline">ফরম পূরণ করুন →</a></span></div></div>
         </div>
       </div>
@@ -356,12 +440,100 @@
 </main>
 
 <footer>
-  © 2026 Mymensingh Metropolitan Open Scout Group · Bangladesh Scouts Rover Region
+  © 2026 Mymensingh Metropolitan Open Scout Group · Bangladesh Scout Mymensingh Region & Bangladesh Scouts Rover Region
 </footer>
-
 
 <script>
 (() => {
+  /* --- ১. নেতৃত্ববৃন্দের ডেটা --- */
+  const leadersData = {
+    lutfor: {
+      name: 'প্রফেসর মোঃ লুৎফর রহমান',
+      role: 'গ্রুপ সভাপতি — ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+      journey: [
+        'গ্রুপ সভাপতি, ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+        'সহ-সভাপতি, বাংলাদেশ স্কাউটস, রোভার অঞ্চল',
+        'সাবেক জেলা সম্পাদক, বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার'
+      ]
+    },
+    saiful: {
+      name: 'মো: সাইফুল ইসলাম - এএলটি',
+      role: 'গ্রুপ সম্পাদক — ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+      journey: [
+        'গ্রুপ সম্পাদক, ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+        'সহকারী লিডার ট্রেনার (ALT), বাংলাদেশ স্কাউটস',
+        'জেলা সম্পাদক, বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার',
+        'সাবেক জেলা রোভার স্কাউট লিডার (DRSL), বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার'
+      ]
+    },
+    faruk: {
+      name: 'ফারুক হোসেন',
+      role: 'রোভার স্কাউট লিডার (RSL) — ৮৪ নং ইউনিট',
+      journey: [
+        'রোভার স্কাউট লিডার, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+        'স্কাউট শাখায় স্কিল কোর্স (Skill Course) সফলভাবে সম্পন্ন'
+      ]
+    },
+    morsalina: {
+      name: 'মোরসালিনা আক্তার',
+      role: 'রোভার স্কাউট লিডার (RSL) — ৮৫ নং ইউনিট (গার্ল)',
+      journey: [
+        'রোভার স্কাউট লিডার, ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
+        'স্কাউট শাখায় স্কিল কোর্স (Skill Course) সফলভাবে সম্পন্ন'
+      ]
+    },
+    tanjim: {
+      name: 'তানজীম তালুকদার জয়',
+      role: 'সিনিয়র রোভার মেট (SRM) — ৮৪ নং ইউনিট',
+      journey: [
+        'সিনিয়র রোভার মেট, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+        'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
+        'সাবেক সিনিয়র রোভার মেট, নাসিরাবাদ কলেজ রোভার স্কাউট গ্রুপ'
+      ]
+    },
+    tamanna: {
+      name: 'মোছাঃ তামান্না খাতুন',
+      role: 'সিনিয়র রোভার মেট (SRM) — ৮৫ নং ইউনিট (গার্ল)',
+      journey: [
+        'সিনিয়র রোভার মেট, ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
+        'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
+        'সাবেক সিনিয়র রোভার মেট'
+      ]
+    }
+  };
+
+  const scoutModal = document.getElementById('scoutModal');
+  const modalName = document.getElementById('modalName');
+  const modalRole = document.getElementById('modalRole');
+  const modalJourney = document.getElementById('modalJourney');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+  document.querySelectorAll('.person[data-person]').forEach(card => {
+    card.addEventListener('click', () => {
+      const personKey = card.getAttribute('data-person');
+      const data = leadersData[personKey];
+      if (!data) return;
+
+      modalName.textContent = data.name;
+      modalRole.textContent = data.role;
+      modalJourney.innerHTML = data.journey.map(item => `
+        <li>
+          <span class="icon">⚜</span>
+          <div>${item}</div>
+        </li>
+      `).join('');
+
+      scoutModal.classList.add('show');
+    });
+  });
+
+  const closeModal = () => scoutModal.classList.remove('show');
+  modalCloseBtn.addEventListener('click', closeModal);
+  scoutModal.addEventListener('click', (e) => {
+    if (e.target === scoutModal) closeModal();
+  });
+
+  /* --- ২. ভর্তি ফরম ও ডায়নামিক ক্লাস হ্যান্ডলিং --- */
   const form = document.getElementById('inlineRegistrationForm');
   if (!form) return;
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCLeC9kAeyqpO5R3By-XBwODWGfZRqf-vxZDoaz7eqKPCYcDxDGNNXoQZXIKiWwwjTcw/exec';
@@ -371,6 +543,59 @@
   const detailsBox = document.getElementById('inlineDetailsBox');
   const details = document.getElementById('applyDetails');
   const count = document.getElementById('detailsCountInline');
+
+  const branchSelect = document.getElementById('applyBranch');
+  const classSelect = document.getElementById('applyClass');
+  const subjectGroupWrap = document.getElementById('subjectGroupWrap');
+  const applySubject = document.getElementById('applySubject');
+
+  const classData = {
+    'কাব স্কাউট': [
+      { val: 'Class 1', label: 'Class 1 (১ম শ্রেণি)' },
+      { val: 'Class 2', label: 'Class 2 (২য় শ্রেণি)' },
+      { val: 'Class 3', label: 'Class 3 (৩য় শ্রেণি)' },
+      { val: 'Class 4', label: 'Class 4 (৪র্থ শ্রেণি)' },
+      { val: 'Class 5', label: 'Class 5 (৫ম শ্রেণি)' }
+    ],
+    'স্কাউট': [
+      { val: 'Class 6', label: 'Class 6 (৬ষ্ঠ শ্রেণি)' },
+      { val: 'Class 7', label: 'Class 7 (৭ম শ্রেণি)' },
+      { val: 'Class 8', label: 'Class 8 (৮ম শ্রেণি)' },
+      { val: 'Class 9', label: 'Class 9 (৯ম শ্রেণি)' },
+      { val: 'Class 10', label: 'Class 10 (১০ম শ্রেণি)' }
+    ],
+    'রোভার স্কাউট': [
+      { val: 'Class 11', label: 'Class 11 (একাদশ)' },
+      { val: 'Class 12', label: 'Class 12 (দ্বাদশ)' },
+      { val: 'Diploma / Polytechnic', label: 'Diploma / Polytechnic' },
+      { val: 'Honours 1st Year', label: 'অনার্স ১ম বর্ষ / ডিগ্রি ১ম বর্ষ' },
+      { val: 'Honours 2nd Year', label: 'অনার্স ২য় বর্ষ / ডিগ্রি ২য় বর্ষ' },
+      { val: 'Honours 3rd Year', label: 'অনার্স ৩য় বর্ষ / ডিগ্রি ৩য় বর্ষ' },
+      { val: 'Honours 4th Year', label: 'অনার্স ৪র্থ বর্ষ' },
+      { val: 'Other', label: 'অন্যান্য (বিশ্ববিদ্যালয় স্তর)' }
+    ]
+  };
+
+  branchSelect.addEventListener('change', () => {
+    const selected = branchSelect.value;
+    classSelect.innerHTML = '<option value="" selected disabled>-- ক্লাস নির্বাচন করুন --</option>';
+
+    if (classData[selected]) {
+      classData[selected].forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.val;
+        opt.textContent = item.label;
+        classSelect.appendChild(opt);
+      });
+    }
+
+    if (selected === 'রোভার স্কাউট') {
+      subjectGroupWrap.style.display = 'flex';
+    } else {
+      subjectGroupWrap.style.display = 'none';
+      applySubject.value = '';
+    }
+  });
 
   document.querySelectorAll('input[name="scouting_experience"]').forEach(radio => {
     radio.addEventListener('change', () => {
@@ -387,14 +612,14 @@
     status.textContent = '';
 
     const data = Object.fromEntries(new FormData(form).entries());
-    if (!data.name.trim() || !data.institution.trim() || !data.class || !data.gender || !data.scouting_experience) {
+    if (!data.scout_branch || !data.dob || !data.name?.trim() || !data.institution?.trim() || !data.class || !data.gender || !data.scouting_experience) {
       status.className = 'form-status error';
       status.textContent = '⚠️ অনুগ্রহ করে সব প্রয়োজনীয় তথ্য পূরণ করুন।';
       return;
     }
-    if (!phoneRegex.test(data.mobile.trim()) || !phoneRegex.test(data.whatsapp.trim())) {
+    if (!phoneRegex.test(data.mobile?.trim()) || !phoneRegex.test(data.whatsapp?.trim())) {
       status.className = 'form-status error';
-      status.textContent = '⚠️ মোবাইল ও WhatsApp নম্বর সঠিক ১১ ডিজিটে দিন।';
+      status.textContent = '⚠️ মোবাইল ও WhatsApp নম্বর সঠিক ১১ ডিজিটে দিন (যেমন: 017XXXXXXXX)।';
       return;
     }
 
@@ -405,9 +630,14 @@
       await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
         body: new URLSearchParams(data)
       });
       form.reset();
+      classSelect.innerHTML = '<option value="" selected disabled>-- আগে শাখা নির্বাচন করুন --</option>';
+      subjectGroupWrap.style.display = 'none';
       detailsBox.classList.remove('show');
       count.textContent = '0';
       status.className = 'form-status success';
