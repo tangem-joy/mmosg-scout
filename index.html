@@ -1,658 +1,1509 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ — বাংলাদেশ স্কাউট রোভার অঞ্চলের আওতাধীন রোভার স্কাউটিং কার্যক্রম।">
-  <title>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --green:#08783f; --green-dark:#045b30; --green-soft:#eaf7ef;
-      --gold:#f4c542; --ink:#13251b; --muted:#64746b; --white:#fff;
-      --line:#dfe9e3; --shadow:0 18px 50px rgba(5,64,34,.10);
-    }
-    *{box-sizing:border-box;scroll-behavior:smooth}
-    body{margin:0;font-family:"Hind Siliguri",sans-serif;color:var(--ink);background:#f7fbf8;line-height:1.7}
-    a{text-decoration:none;color:inherit}
-    .container{width:min(1120px,92%);margin:auto}
-    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-    .nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(145deg,var(--green),var(--green-dark));color:#fff;display:grid;place-items:center;font-size:23px;box-shadow:0 8px 22px rgba(8,120,63,.25);overflow:hidden}
-    .mark img{width:100%;height:100%;object-fit:cover}
-    .brand small{display:block;color:var(--muted);font:500 11px/1.2 Inter,sans-serif;letter-spacing:.3px}
-    .brand strong{font-size:17px}
-    nav{display:flex;align-items:center;gap:20px;font-weight:600}
-    nav a{color:#43544b}
-    nav a:hover{color:var(--green)}
-    .nav-btn{padding:9px 17px;border-radius:999px;background:var(--green);color:#fff!important}
-    .hero{position:relative;overflow:hidden;padding:90px 0 78px;background:radial-gradient(circle at 85% 15%,#dff5e8 0,transparent 32%),linear-gradient(135deg,#f8fffa,#edf9f1)}
-    .hero:before{content:"";position:absolute;width:360px;height:360px;border:1px solid rgba(8,120,63,.12);border-radius:50%;right:-130px;bottom:-180px}
-    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:55px;align-items:center}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:#e1f4e8;color:var(--green-dark);font-weight:700;font-size:14px}
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
-    h1{font-size:clamp(38px,5.3vw,68px);line-height:1.08;margin:20px 0 16px;letter-spacing:-1.4px}
-    .hero p{font-size:19px;color:#52645a;max-width:720px;margin:0}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 21px;border-radius:12px;font-weight:700;border:1px solid transparent;transition:.2s}
-    .btn-primary{background:var(--green);color:#fff;box-shadow:0 10px 24px rgba(8,120,63,.20)}
-    .btn-primary:hover{transform:translateY(-2px);background:var(--green-dark)}
-    .btn-light{background:#fff;border-color:var(--line);color:var(--green-dark)}
-    .hero-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow)}
-    .hero-card .crest{height:115px;width:115px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);border:8px solid #fff;box-shadow:0 0 0 1px var(--line);overflow:hidden}
-    .hero-card .crest img{width:100%;height:100%;object-fit:cover}
-    .hero-card h3{text-align:center;margin:0 0 6px;font-size:22px}
-    .hero-card p{text-align:center;color:var(--muted);margin:0}
-    .mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-    .stat{padding:13px;border-radius:14px;background:#f7fbf8;border:1px solid #e7efe9;text-align:center}
-    .stat b{display:block;color:var(--green);font-size:20px}
-    .stat span{font-size:12px;color:var(--muted)}
-    section{padding:82px 0}
-    .section-head{max-width:720px;margin-bottom:34px}
-    .section-head span{color:var(--green);font-weight:800}
-    .section-head h2{font-size:clamp(29px,4vw,43px);margin:5px 0 9px;line-height:1.2}
-    .section-head p{color:var(--muted);margin:0}
-    .about{background:#fff}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-    .info-card{padding:28px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.03)}
-    .info-card h3{margin:0 0 8px;color:var(--green-dark)}
-    .branches{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .branch{padding:28px;border-radius:22px;background:linear-gradient(145deg,#fff,#f4fbf6);border:1px solid var(--line);position:relative;overflow:hidden}
-    .branch:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:#dff2e6;right:-35px;top:-35px}
-    .branch .num{font:800 13px Inter,sans-serif;color:var(--green);letter-spacing:.5px}
-    .branch h3{font-size:23px;margin:7px 0}
-    .branch p{color:var(--muted);margin:0}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ — বাংলাদেশ স্কাউট রোভার অঞ্চলের আওতাধীন রোভার স্কাউটিং কার্যক্রম।">
+    <title>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #08783f;
+            --green-dark: #045b30;
+            --green-soft: #eaf7ef;
+            --gold: #f4c542;
+            --ink: #13251b;
+            --muted: #64746b;
+            --white: #fff;
+            --line: #dfe9e3;
+            --shadow: 0 18px 50px rgba(5, 64, 34, .10);
+        }
 
-    /* টিম কার্ড */
-    .team{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
-    .person{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 20px;text-align:center;box-shadow:0 9px 28px rgba(5,64,34,.05);cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;position:relative}
-    .person:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(8,120,63,.15);border-color:var(--green)}
-    .avatar{width:70px;height:70px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);color:var(--green-dark);font-weight:800;font-size:24px;border:2px solid #e0f2e6;overflow:hidden}
-    .avatar img{width:100%;height:100%;object-fit:cover}
-    .person h3{font-size:18px;margin:0 0 5px}
-    .person p{font-size:14px;color:var(--muted);margin:0;line-height:1.5}
-    .person .view-profile{display:inline-block;margin-top:12px;font-size:12px;color:var(--green);font-weight:700;background:var(--green-soft);padding:4px 12px;border-radius:20px}
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth
+        }
 
-    /* স্কাউটিং যাত্রা পপআপ */
-    .scout-modal{display:none;position:fixed;inset:0;background:rgba(19,37,27,.6);backdrop-filter:blur(6px);z-index:9999;place-items:center;padding:16px;opacity:0;transition:opacity .25s ease}
-    .scout-modal.show{display:grid;opacity:1}
-    .modal-box{background:#fff;width:min(520px,100%);border-radius:24px;padding:32px 28px;box-shadow:0 25px 60px rgba(0,0,0,.25);position:relative;transform:scale(.95);transition:transform .25s ease}
-    .scout-modal.show .modal-box{transform:scale(1)}
-    .modal-close{position:absolute;top:18px;right:18px;background:#f0f5f2;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:18px;color:#43544b;transition:.2s}
-    .modal-close:hover{background:#d7e8dd;color:#000}
-    .modal-badge{display:inline-block;font-size:12px;font-weight:700;color:var(--green);background:var(--green-soft);padding:4px 12px;border-radius:999px;margin-bottom:8px}
-    .modal-box h3{font-size:22px;margin:0 0 4px;color:var(--ink)}
-    .modal-box .sub-role{font-size:14px;color:var(--muted);font-weight:600;margin:0 0 20px}
-    .journey-timeline{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-    .journey-timeline li{display:flex;align-items:flex-start;gap:12px;background:#f7fbf8;padding:12px 14px;border-radius:12px;border:1px solid #e6f0e9;font-size:14.5px;color:#2c3e34}
-    .journey-timeline li span.icon{color:var(--green);font-size:18px;line-height:1.2}
+        body {
+            margin: 0;
+            font-family: "Hind Siliguri", sans-serif;
+            color: var(--ink);
+            background: #f7fbf8;
+            line-height: 1.7
+        }
 
-    .contact{background:var(--green-dark);color:#fff}
-    .contact .section-head p{color:#cce5d5}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-    .contact-card{padding:28px;border-radius:22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)}
-    .contact-item{display:flex;gap:13px;margin:15px 0;align-items:flex-start}
-    .contact-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.12);display:grid;place-items:center;flex:0 0 auto}
-    .contact-item b{display:block}.contact-item span{color:#cce5d5;font-size:14px}
-    footer{padding:25px 0;background:#034523;color:#cde7d6;text-align:center;font-size:13px}
+        a {
+            text-decoration: none;
+            color: inherit
+        }
 
-    .apply-section{background:linear-gradient(180deg,#f7fbf8 0,#eef8f1 100%)}
-    .apply-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start}
-    .apply-info{background:linear-gradient(145deg,var(--green-dark),var(--green));color:#fff;border-radius:26px;padding:30px;box-shadow:var(--shadow);position:sticky;top:96px}
-    .apply-info .tag{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:6px 11px;border-radius:999px;font-size:13px;font-weight:700}
-    .apply-info h3{font-size:31px;line-height:1.2;margin:16px 0 10px}
-    .apply-info p{color:#d8f0df;margin:0}
-    .apply-points{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:12px}
-    .apply-points li{display:flex;gap:10px;align-items:flex-start;color:#e8f7ed}
-    .apply-points li span:first-child{font-size:18px}
-    .apply-form-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:30px;box-shadow:var(--shadow)}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .form-group{display:flex;flex-direction:column;gap:7px}
-    .form-group.full{grid-column:1/-1}
-    .form-label{font-weight:700;color:#23382b}
-    .required{color:#d32f2f}
-    .form-control{width:100%;border:1px solid #d7e4db;border-radius:12px;padding:13px 14px;font:inherit;color:var(--ink);background:#fbfdfb;outline:none;transition:.2s}
-    .form-control:focus{border-color:var(--green);box-shadow:0 0 0 4px rgba(8,120,63,.10);background:#fff}
-    .form-hint{font-size:12px;color:var(--muted)}
-    .radio-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .radio-option{position:relative}
-    .radio-option input{position:absolute;opacity:0;pointer-events:none}
-    .radio-option label{display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border:1px solid #d7e4db;border-radius:12px;cursor:pointer;font-weight:700;background:#fbfdfb}
-    .radio-option input:checked+label{border-color:var(--green);background:var(--green-soft);color:var(--green-dark);box-shadow:0 0 0 2px rgba(8,120,63,.08)}
-    .details-box{display:none}
-    .details-box.show{display:flex}
-    .form-submit{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:4px}
-    .form-submit button{border:0;cursor:pointer}
-    .form-status{font-size:14px;font-weight:600;min-height:24px}
-    .form-status.success{color:#08783f}.form-status.error{color:#b3261e}
-    .form-note{font-size:12px;color:var(--muted);margin:2px 0 0}
+        .container {
+            width: min(1120px, 92%);
+            margin: auto
+        }
 
-    @media(max-width:900px){
-      .hero-grid,.about-grid,.contact-grid,.apply-wrap{grid-template-columns:1fr}
-      .apply-info{position:static}
-      .team{grid-template-columns:1fr 1fr}
-      .hero{padding-top:65px}
-    }
-    @media(max-width:620px){
-      nav a:not(.nav-btn){display:none}
-      .branches,.team{grid-template-columns:1fr}
-      .form-grid{grid-template-columns:1fr}
-      .form-group.full,.form-submit{grid-column:auto}
-      .nav{height:66px}
-      .brand strong{font-size:14px}
-      h1{font-size:42px}
-      section{padding:62px 0}
-    }
-  </style>
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(255, 255, 255, .94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav {
+            height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800
+        }
+
+        .mark {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: linear-gradient(145deg, var(--green), var(--green-dark));
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-size: 23px;
+            box-shadow: 0 8px 22px rgba(8, 120, 63, .25);
+            overflow: hidden
+        }
+
+        .mark img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .brand small {
+            display: block;
+            color: var(--muted);
+            font: 500 11px/1.2 Inter, sans-serif;
+            letter-spacing: .3px
+        }
+
+        .brand strong {
+            font-size: 17px
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 600
+        }
+
+        nav a {
+            color: #43544b
+        }
+
+        nav a:hover {
+            color: var(--green)
+        }
+
+        .nav-btn {
+            padding: 9px 17px;
+            border-radius: 999px;
+            background: var(--green);
+            color: #fff !important
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 90px 0 78px;
+            background: radial-gradient(circle at 85% 15%, #dff5e8 0, transparent 32%), linear-gradient(135deg, #f8fffa, #edf9f1)
+        }
+
+        .hero:before {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border: 1px solid rgba(8, 120, 63, .12);
+            border-radius: 50%;
+            right: -130px;
+            bottom: -180px
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            gap: 55px;
+            align-items: center
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: #e1f4e8;
+            color: var(--green-dark);
+            font-weight: 700;
+            font-size: 14px
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold)
+        }
+
+        h1 {
+            font-size: clamp(38px, 5.3vw, 68px);
+            line-height: 1.08;
+            margin: 20px 0 16px;
+            letter-spacing: -1.4px
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #52645a;
+            max-width: 720px;
+            margin: 0
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 21px;
+            border-radius: 12px;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: .2s
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: #fff;
+            box-shadow: 0 10px 24px rgba(8, 120, 63, .20)
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: var(--green-dark)
+        }
+
+        .btn-light {
+            background: #fff;
+            border-color: var(--line);
+            color: var(--green-dark)
+        }
+
+        .hero-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            padding: 28px;
+            box-shadow: var(--shadow)
+        }
+
+        .hero-card .crest {
+            height: 115px;
+            width: 115px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--green-soft);
+            border: 8px solid #fff;
+            box-shadow: 0 0 0 1px var(--line);
+            overflow: hidden
+        }
+
+        .hero-card .crest img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .hero-card h3 {
+            text-align: center;
+            margin: 0 0 6px;
+            font-size: 22px
+        }
+
+        .hero-card p {
+            text-align: center;
+            color: var(--muted);
+            margin: 0
+        }
+
+        .mini-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 22px
+        }
+
+        .stat {
+            padding: 13px;
+            border-radius: 14px;
+            background: #f7fbf8;
+            border: 1px solid #e7efe9;
+            text-align: center
+        }
+
+        .stat b {
+            display: block;
+            color: var(--green);
+            font-size: 15px;
+            margin-bottom: 4px;
+            line-height: 1.3
+        }
+
+        .stat span {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        section {
+            padding: 82px 0
+        }
+
+        .section-head {
+            max-width: 720px;
+            margin-bottom: 34px
+        }
+
+        .section-head span {
+            color: var(--green);
+            font-weight: 800
+        }
+
+        .section-head h2 {
+            font-size: clamp(29px, 4vw, 43px);
+            margin: 5px 0 9px;
+            line-height: 1.2
+        }
+
+        .section-head p {
+            color: var(--muted);
+            margin: 0
+        }
+
+        .about {
+            background: #fff
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px
+        }
+
+        .info-card {
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .03)
+        }
+
+        .info-card h3 {
+            margin: 0 0 8px;
+            color: var(--green-dark)
+        }
+
+        .branches {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px
+        }
+
+        .branch {
+            padding: 28px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #fff, #f4fbf6);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .branch:after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #dff2e6;
+            right: -35px;
+            top: -35px
+        }
+
+        .branch .num {
+            font: 800 13px Inter, sans-serif;
+            color: var(--green);
+            letter-spacing: .5px
+        }
+
+        .branch h3 {
+            font-size: 23px;
+            margin: 7px 0
+        }
+
+        .branch p {
+            color: var(--muted);
+            margin: 0
+        }
+
+        /* টিম কার্ড */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px
+        }
+
+        .person {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 26px 20px;
+            text-align: center;
+            box-shadow: 0 9px 28px rgba(5, 64, 34, .05);
+            cursor: pointer;
+            transition: transform .2s ease, box-shadow .2s ease;
+            position: relative
+        }
+
+        .person:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 34px rgba(8, 120, 63, .15);
+            border-color: var(--green)
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--green-soft);
+            color: var(--green-dark);
+            font-weight: 800;
+            font-size: 24px;
+            border: 2px solid #e0f2e6;
+            overflow: hidden
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .person h3 {
+            font-size: 18px;
+            margin: 0 0 5px
+        }
+
+        .person p {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5
+        }
+
+        .person .view-profile {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 12px;
+            color: var(--green);
+            font-weight: 700;
+            background: var(--green-soft);
+            padding: 4px 12px;
+            border-radius: 20px
+        }
+
+        /* স্কাউটিং যাত্রা পপআপ */
+        .scout-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(19, 37, 27, .6);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            place-items: center;
+            padding: 16px;
+            opacity: 0;
+            transition: opacity .25s ease
+        }
+
+        .scout-modal.show {
+            display: grid;
+            opacity: 1
+        }
+
+        .modal-box {
+            background: #fff;
+            width: min(520px, 100%);
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
+            position: relative;
+            transform: scale(.95);
+            transition: transform .25s ease
+        }
+
+        .scout-modal.show .modal-box {
+            transform: scale(1)
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: #f0f5f2;
+            border: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            color: #43544b;
+            transition: .2s
+        }
+
+        .modal-close:hover {
+            background: #d7e8dd;
+            color: #000
+        }
+
+        .modal-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--green);
+            background: var(--green-soft);
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 8px
+        }
+
+        .modal-box h3 {
+            font-size: 22px;
+            margin: 0 0 4px;
+            color: var(--ink)
+        }
+
+        .modal-box .sub-role {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 600;
+            margin: 0 0 20px
+        }
+
+        .journey-timeline {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 12px
+        }
+
+        .journey-timeline li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #f7fbf8;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #e6f0e9;
+            font-size: 14.5px;
+            color: #2c3e34
+        }
+
+        .journey-timeline li span.icon {
+            color: var(--green);
+            font-size: 18px;
+            line-height: 1.2
+        }
+
+        .contact {
+            background: var(--green-dark);
+            color: #fff
+        }
+
+        .contact .section-head p {
+            color: #cce5d5
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px
+        }
+
+        .contact-card {
+            padding: 28px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .15)
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 13px;
+            margin: 15px 0;
+            align-items: flex-start
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .12);
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto
+        }
+
+        .contact-item b {
+            display: block
+        }
+
+        .contact-item span {
+            color: #cce5d5;
+            font-size: 14px
+        }
+
+        footer {
+            padding: 25px 0;
+            background: #034523;
+            color: #cde7d6;
+            text-align: center;
+            font-size: 13px
+        }
+
+        .apply-section {
+            background: linear-gradient(180deg, #f7fbf8 0, #eef8f1 100%)
+        }
+
+        .apply-wrap {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 28px;
+            align-items: start
+        }
+
+        .apply-info {
+            background: linear-gradient(145deg, var(--green-dark), var(--green));
+            color: #fff;
+            border-radius: 26px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 96px
+        }
+
+        .apply-info .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            padding: 6px 11px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700
+        }
+
+        .apply-info h3 {
+            font-size: 31px;
+            line-height: 1.2;
+            margin: 16px 0 10px
+        }
+
+        .apply-info p {
+            color: #d8f0df;
+            margin: 0
+        }
+
+        .apply-points {
+            margin: 24px 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 12px
+        }
+
+        .apply-points li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            color: #e8f7ed
+        }
+
+        .apply-points li span:first-child {
+            font-size: 18px
+        }
+
+        /* ভর্তি সহায়িকা কার্ড */
+        .apply-helpline {
+            margin-top: 24px;
+            padding: 18px 20px;
+            background: rgba(0, 0, 0, .22);
+            border: 1px solid rgba(255, 255, 255, .22);
+            border-radius: 18px;
+            backdrop-filter: blur(8px)
+        }
+
+        .apply-helpline h4 {
+            margin: 0 0 10px;
+            font-size: 15px;
+            color: var(--gold);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .helpline-box {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: #f1faf4
+        }
+
+        .helpline-box strong {
+            display: block;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 2px
+        }
+
+        .helpline-box span {
+            display: block;
+            color: #d2edd9;
+            font-size: 13.5px
+        }
+
+        .helpline-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            background: #25d366;
+            color: #073516 !important;
+            padding: 9px 18px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: transform .2s ease, background .2s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .15);
+            text-decoration: none
+        }
+
+        .helpline-whatsapp:hover {
+            background: #20ba59;
+            transform: translateY(-2px)
+        }
+
+        .apply-form-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            padding: 30px;
+            box-shadow: var(--shadow)
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .form-group.full {
+            grid-column: 1/-1
+        }
+
+        .form-label {
+            font-weight: 700;
+            color: #23382b
+        }
+
+        .required {
+            color: #d32f2f
+        }
+
+        .form-control {
+            width: 100%;
+            border: 1px solid #d7e4db;
+            border-radius: 12px;
+            padding: 13px 14px;
+            font: inherit;
+            color: var(--ink);
+            background: #fbfdfb;
+            outline: none;
+            transition: .2s
+        }
+
+        .form-control:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 4px rgba(8, 120, 63, .10);
+            background: #fff
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .radio-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .radio-option {
+            position: relative
+        }
+
+        .radio-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none
+        }
+
+        .radio-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 12px;
+            border: 1px solid #d7e4db;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            background: #fbfdfb
+        }
+
+        .radio-option input:checked+label {
+            border-color: var(--green);
+            background: var(--green-soft);
+            color: var(--green-dark);
+            box-shadow: 0 0 0 2px rgba(8, 120, 63, .08)
+        }
+
+        .details-box {
+            display: none
+        }
+
+        .details-box.show {
+            display: flex
+        }
+
+        .form-submit {
+            grid-column: 1/-1;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 4px
+        }
+
+        .form-submit button {
+            border: 0;
+            cursor: pointer
+        }
+
+        .form-status {
+            font-size: 14px;
+            font-weight: 600;
+            min-height: 24px
+        }
+
+        .form-status.success {
+            color: #08783f
+        }
+
+        .form-status.error {
+            color: #b3261e
+        }
+
+        .form-note {
+            font-size: 12px;
+            color: var(--muted);
+            margin: 2px 0 0
+        }
+
+        @media(max-width:900px) {
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid,
+            .apply-wrap {
+                grid-template-columns: 1fr
+            }
+
+            .apply-info {
+                position: static
+            }
+
+            .team {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .hero {
+                padding-top: 65px
+            }
+        }
+
+        @media(max-width:620px) {
+            nav a:not(.nav-btn) {
+                display: none
+            }
+
+            .branches,
+            .team {
+                grid-template-columns: 1fr
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .form-group.full,
+            .form-submit {
+                grid-column: auto
+            }
+
+            .nav {
+                height: 66px
+            }
+
+            .brand strong {
+                font-size: 14px
+            }
+
+            h1 {
+                font-size: 42px
+            }
+
+            section {
+                padding: 62px 0
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <div class="container nav">
-    <a class="brand" href="#home">
-      <div class="mark">
-        <img src="Group%20Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
-      </div>
-      <div>
-        <small>বাংলাদেশ স্কাউট</small>
-        <strong>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</strong>
-      </div>
-    </a>
-    <nav>
-      <a href="#about">পরিচিতি</a>
-      <a href="#branches">শাখা</a>
-      <a href="#team">নেতৃত্ব</a>
-      <a class="nav-btn" href="#apply">ভর্তি ফরম ↗</a>
-    </nav>
-  </div>
-</header>
-
-<main id="home">
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="eyebrow"><i class="dot"></i> বাংলাদেশ স্কাউট, ময়মনসিংহ অঞ্চল ও বাংলাদেশ স্কাউট রোভার অঞ্চল</span>
-        <h1>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</h1>
-        <p>রোভার স্কাউটদের দক্ষতা, নেতৃত্ব, সেবা ও মানবিক মূল্যবোধ বিকাশে নিবেদিত একটি সংগঠিত স্কাউটিং প্ল্যাটফর্ম।</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#apply">📝 ভর্তি ফরম</a>
-          <a class="btn btn-light" href="#about">আমাদের সম্পর্কে ↓</a>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <div class="crest">
-          <img src="Group%20Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
-        </div>
-        <h3> রোভার স্কাউট শাখার দুইটি নিবন্ধিত ইউনিট রয়েছে </h3>
-        <p>ছেলে ও মেয়ে রোভার সদস্যদের জন্য পৃথক শাখা</p>
-        <div class="mini-stats">
-          <div class="stat"><b>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ </b><span>ছেলে সদস্যদের জন্য </span></div>
-          <div class="stat"><b>৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল) </b><span>মেয়ে সদস্যদের জন্য </span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about" id="about">
-    <div class="container">
-      <div class="section-head">
-        <span>আমাদের পরিচিতি</span>
-        <h2>স্কাউটিং থেকে নেতৃত্ব, নেতৃত্ব থেকে সেবা</h2>
-        <p>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপের রোভার ইউনিট দুইটি বাংলাদেশ স্কাউটস, রোভার অঞ্চলের আওতাধীন এবং বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভারের তত্তাবধানে রোভার কার্যক্রম পরিচালনা করে।</p>
-      </div>
-      <div class="about-grid">
-        <div class="info-card">
-          <h3>সংগঠনের কাঠামো</h3>
-          <p>গ্রুপটির রোভার শাখার দুইটি নিবন্ধিত ইউনিট চলমান রয়েছে — ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ এবং ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)। প্রথমটি ছেলে রোভার সদস্যদের জন্য এবং দ্বিতীয়টি মেয়ে সদস্যদের জন্য নিবন্ধনকৃত।</p>
-        </div>
-        <div class="info-card">
-          <h3>আমাদের লক্ষ্য</h3>
-          <p>রোভারদের মধ্যে নেতৃত্ব, শৃঙ্খলা, দায়িত্ববোধ, দলগত কাজ এবং সমাজসেবার মানসিকতা গড়ে তোলার মাধ্যমে একজন দক্ষ ও দায়িত্বশীল নাগরিক হিসেবে গড়ে উঠতে সহায়তা করা।</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="branches">
-    <div class="container">
-      <div class="section-head">
-        <span>আমাদের শাখা</span>
-        <h2>একটি শাখা, দুইটি ইউনিট, একটি স্কাউটিং পরিবার</h2>
-        <p>দুইটি নিবন্ধিত রোভার ইউনিটের নিজস্ব রোভার নেতৃত্ব রয়েছে।</p>
-      </div>
-      <div class="branches">
-        <div class="branch">
-          <div class="num">রোভার ইউনিট - ০১</div>
-          <h3> ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</h3>
-          <p>ছেলে রোভার সদস্যদের জন্য নিবন্ধনকৃত শাখা।<br><br><b>রোভার স্কাউট লিডার:</b> ফারুক হোসেন</p>
-        </div>
-        <div class="branch">
-          <div class="num">রোভার ইউনিট - ০২</div>
-          <h3> ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)</h3>
-          <p>মেয়ে রোভার সদস্যদের জন্য নিবন্ধনকৃত শাখা।<br><br><b>রোভার স্কাউট লিডার:</b> মোরসালিনা আক্তার</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- নেতৃত্ব সেকশন -->
-  <section id="team" class="about">
-    <div class="container">
-      <div class="section-head">
-        <span>নেতৃত্ব</span>
-        <h2>গ্রুপ নেতৃত্ব ও সিনিয়র রোভার মেট</h2>
-        <p>ব্যক্তিদের কার্ডে ক্লিক করে তাঁদের স্কাউটিং যাত্রা ও অভিজ্ঞতার বিস্তারিত দেখুন।</p>
-      </div>
-      <div class="team">
-        
-        <div class="person" data-person="lutfor">
-          <div class="avatar">লু</div>
-          <h3>প্রফেসর মোঃ লুৎফর রহমান</h3>
-          <p>গ্রুপ সভাপতি</p>
-          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-        </div>
-
-        <div class="person" data-person="saiful">
-          <div class="avatar">
-            <img src="গ্রুপ%20সম্পাদক.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
-          </div>
-          <h3>মো: সাইফুল ইসলাম - এএলটি</h3>
-          <p>গ্রুপ সম্পাদক</p>
-          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-        </div>
-
-        <div class="person" data-person="faruk">
-          <div class="avatar">ফা</div>
-          <h3>ফারুক হোসেন</h3>
-          <p>রোভার স্কাউট লিডার<br>৮৪ নং ইউনিট</p>
-          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-        </div>
-
-        <div class="person" data-person="morsalina">
-          <div class="avatar">মো</div>
-          <h3>মোরসালিনা আক্তার</h3>
-          <p>রোভার স্কাউট লিডার<br>৮৫ নং ইউনিট (গার্ল)</p>
-          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-        </div>
-
-        <div class="person" data-person="tanjim">
-          <div class="avatar">
-            <img src="সিনিয়র%20রোভার%20মেট%20-%20ছেলে.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
-          </div>
-          <h3>তানজীম তালুকদার জয়</h3>
-          <p>সিনিয়র রোভার মেট<br>৮৪ নং ইউনিট</p>
-          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-        </div>
-
-        <div class="person" data-person="tamanna">
-          <div class="avatar">তা</div>
-          <h3>মোছাঃ তামান্না খাতুন</h3>
-          <p>সিনিয়র রোভার মেট<br>৮৫ নং ইউনিট (গার্ল)</p>
-          <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- স্কাউটিং প্রোফাইল মডাল -->
-  <div class="scout-modal" id="scoutModal" role="dialog" aria-modal="true">
-    <div class="modal-box">
-      <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
-      <span class="modal-badge">স্কাউটিং যাত্রা ও বিবরণ</span>
-      <h3 id="modalName">নাম</h3>
-      <p class="sub-role" id="modalRole">পদবি</p>
-      <ul class="journey-timeline" id="modalJourney"></ul>
-    </div>
-  </div>
-
-  <section class="apply-section" id="apply">
-    <div class="container">
-      <div class="section-head">
-        <span>অনলাইন ভর্তি</span>
-        <h2>আমাদের সাথে যুক্ত হওয়ার জন্য অনলাইনে আবেদন করুন</h2>
-        <p> সাধারণ কিছু তথ্য জমা দিয়ে নিচের ফরম পূরণ করে নিবন্ধন সম্পন্ন করুন। নিবন্ধন সফল হলে গ্রুপের পক্ষ থেকে আপনার সাথে আপনার দেওয়া WhatsApp নম্বর এ যোগাযোগ করবে এবং গ্রুপে যুক্ত করে নিবে। </p>
-      </div>
-
-      <div class="apply-wrap">
-        <div class="apply-info">
-          <span class="tag">আবেদনের সাধারণ তথ্য সমূহ</span>
-          <h3> স্কাউট সদস্য হিসেবে যুক্ত হোন</h3>
-          <p>আপনার তথ্য সঠিকভাবে পূরণ করুন। আবেদন জমা দিতে কোন সমস্যা হলে বা কোন প্রশ্ন থাকলে সিনিয়র রোভার মেটদের সাথে যোগাযোগ করার জন্য অনুরোধ করা হলো </p>
-          <ul class="apply-points">
-            <li><span>✓</span><span>বাংলাদেশি ১১ ডিজিটের মোবাইল নম্বর প্রয়োজন</span></li>
-            <li><span>✓</span><span>স্কাউটিং অভিজ্ঞতা থাকলে সংক্ষেপে লিখতে পারবেন</span></li>
-            <li><span>✓</span><span> ছেলে ও মেয়ে—উভয়-ই আবেদন করতে পারবে</span></li>
-            <li><span>✓</span><span>বর্তমানে রোভার স্কাউট শাখার পাশাপাশি সদস্য সংগ্রহ চলমান আছে।</span></li>
-          </ul>
-        </div>
-
-        <div class="apply-form-card">
-          <form id="inlineRegistrationForm" novalidate autocomplete="off">
-            <div class="form-grid">
-              
-              <div class="form-group full">
-                <label class="form-label" for="applyBranch">আপনি কোন শাখায় যুক্ত হতে চান? <span class="required">*</span></label>
-                <select class="form-control" id="applyBranch" name="scout_branch" required>
-                  <option value="" selected disabled>-- শাখা নির্বাচন করুন --</option>
-                  <option value="কাব স্কাউট">কাব স্কাউট</option>
-                  <option value="স্কাউট">স্কাউট</option>
-                  <option value="রোভার স্কাউট">রোভার স্কাউট</option>
-                </select>
-              </div>
-
-              <div class="form-group full">
-                <label class="form-label" for="applyDOB">জন্মতারিখ <span class="required">*</span></label>
-                <input class="form-control" id="applyDOB" name="dob" type="date" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="applyName">নাম <span class="required">*</span></label>
-                <input class="form-control" id="applyName" name="name" type="text" placeholder="আপনার পূর্ণ নাম লিখুন" maxlength="100" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="applyMobile"> অভিভাবকের মোবাইল নম্বর <span class="required">*</span></label>
-                <input class="form-control" id="applyMobile" name="mobile" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" required>
-                <span class="form-hint">বাংলাদেশি মোবাইল নম্বর (১১ ডিজিট)</span>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="applyWhatsapp"> ব্যক্তিগত WhatsApp নম্বর <span class="required">*</span></label>
-                <input class="form-control" id="applyWhatsapp" name="whatsapp" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="applyInstitution">প্রতিষ্ঠানের নাম <span class="required">*</span></label>
-                <input class="form-control" id="applyInstitution" name="institution" type="text" maxlength="150" placeholder="আপনার প্রতিষ্ঠানের নাম লিখুন" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="applyClass">বর্তমান ক্লাস <span class="required">*</span></label>
-                <select class="form-control" id="applyClass" name="class" required>
-                  <option value="" selected disabled>-- আগে শাখা নির্বাচন করুন --</option>
-                </select>
-              </div>
-
-              <div class="form-group" id="subjectGroupWrap" style="display: none;">
-                <label class="form-label" for="applySubject">বিষয় / গ্রুপ</label>
-                <input class="form-control" id="applySubject" name="subject_group" type="text" maxlength="100" placeholder="যেমন: Science, Humanities, Accounting">
-                <span class="form-hint">ঐচ্ছিক</span>
-              </div>
-
-              <div class="form-group">
-                <span class="form-label">জেন্ডার <span class="required">*</span></span>
-                <div class="radio-row">
-                  <div class="radio-option"><input id="genderMaleInline" type="radio" name="gender" value="ছেলে" required><label for="genderMaleInline">👦 ছেলে</label></div>
-                  <div class="radio-option"><input id="genderFemaleInline" type="radio" name="gender" value="মেয়ে"><label for="genderFemaleInline">👧 মেয়ে</label></div>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="#home">
+                <div class="mark">
+                    <img src="Group%20Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
                 </div>
-              </div>
-
-              <div class="form-group">
-                <span class="form-label">পূর্বে স্কাউটিং এর অভিজ্ঞতা আছে? <span class="required">*</span></span>
-                <div class="radio-row">
-                  <div class="radio-option"><input id="expYesInline" type="radio" name="scouting_experience" value="হ্যাঁ" required><label for="expYesInline">✅ হ্যাঁ</label></div>
-                  <div class="radio-option"><input id="expNoInline" type="radio" name="scouting_experience" value="না"><label for="expNoInline">❌ না</label></div>
+                <div>
+                    <small>বাংলাদেশ স্কাউট</small>
+                    <strong>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</strong>
                 </div>
-              </div>
+            </a>
+            <nav>
+                <a href="#about">পরিচিতি</a>
+                <a href="#branches">শাখা</a>
+                <a href="#team">নেতৃত্ব</a>
+                <a class="nav-btn" href="#apply">ভর্তি ফরম ↗</a>
+            </nav>
+        </div>
+    </header>
 
-              <div class="form-group full details-box" id="inlineDetailsBox">
-                <label class="form-label" for="applyDetails">স্কাউটিংয়ের অভিজ্ঞতা সংক্ষেপে লিখুন</label>
-                <textarea class="form-control" id="applyDetails" name="scouting_details" rows="4" maxlength="500" placeholder="আপনার স্কাউটিং অভিজ্ঞতা সম্পর্কে সংক্ষেপে লিখুন..."></textarea>
-                <span class="form-hint"><span id="detailsCountInline">0</span> / 500 characters</span>
-              </div>
+    <main id="home">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <span class="eyebrow"><i class="dot"></i> বাংলাদেশ স্কাউট, ময়মনসিংহ অঞ্চল ও বাংলাদেশ স্কাউট রোভার অঞ্চল</span>
+                    <h1>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</h1>
+                    <p>রোভার স্কাউটদের দক্ষতা, নেতৃত্ব, সেবা ও মানবিক মূল্যবোধ বিকাশে নিবেদিত একটি সংগঠিত স্কাউটিং প্ল্যাটফর্ম।</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="#apply">📝 ভর্তি ফরম</a>
+                        <a class="btn btn-light" href="#about">আমাদের সম্পর্কে ↓</a>
+                    </div>
+                </div>
 
-              <div class="form-submit">
-                <button class="btn btn-primary" id="inlineSubmitBtn" type="submit">📝 নিবন্ধন সম্পন্ন করুন</button>
-                <span class="form-status" id="inlineFormStatus" role="status" aria-live="polite"></span>
-              </div>
-              <p class="form-note form-group full">🔒 আপনার তথ্য শুধুমাত্র স্কাউট নিবন্ধনের কাজে ব্যবহার করা হবে।</p>
+                <div class="hero-card">
+                    <div class="crest">
+                        <img src="Group%20Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
+                    </div>
+                    <h3> রোভার স্কাউট শাখার দুইটি নিবন্ধিত ইউনিট রয়েছে </h3>
+                    <p>ছেলে ও মেয়ে রোভার সদস্যদের জন্য পৃথক শাখা</p>
+                    <div class="mini-stats">
+                        <div class="stat">
+                            <b>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b>
+                        </div>
+                        <div class="stat">
+                            <b>৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)</b>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </form>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-head">
+                    <span>আমাদের পরিচিতি</span>
+                    <h2>স্কাউটিং থেকে নেতৃত্ব, নেতৃত্ব থেকে সেবা</h2>
+                    <p>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপের রোভার ইউনিট দুইটি বাংলাদেশ স্কাউটস, রোভার অঞ্চলের আওতাধীন এবং বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভারের তত্তাবধানে রোভার কার্যক্রম পরিচালনা করে।</p>
+                </div>
+                <div class="about-grid">
+                    <div class="info-card">
+                        <h3>সংগঠনের কাঠামো</h3>
+                        <p>গ্রুপটির রোভার শাখার দুইটি নিবন্ধিত ইউনিট চলমান রয়েছে — ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ এবং ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)। প্রথমটি ছেলে রোভার সদস্যদের জন্য এবং দ্বিতীয়টি মেয়ে সদস্যদের জন্য নিবন্ধনকৃত।</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>আমাদের লক্ষ্য</h3>
+                        <p>রোভারদের মধ্যে নেতৃত্ব, শৃঙ্খলা, দায়িত্ববোধ, দলগত কাজ এবং সমাজসেবার মানসিকতা গড়ে তোলার মাধ্যমে একজন দক্ষ ও দায়িত্বশীল নাগরিক হিসেবে গড়ে উঠতে সহায়তা করা।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="branches">
+            <div class="container">
+                <div class="section-head">
+                    <span>আমাদের শাখা</span>
+                    <h2>একটি শাখা, দুইটি ইউনিট, একটি স্কাউটিং পরিবার</h2>
+                    <p>দুইটি নিবন্ধিত রোভার ইউনিটের নিজস্ব রোভার নেতৃত্ব রয়েছে।</p>
+                </div>
+                <div class="branches">
+                    <div class="branch">
+                        <div class="num">রোভার ইউনিট - ০১</div>
+                        <h3> ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</h3>
+                        <p>ছেলে রোভার সদস্যদের জন্য নিবন্ধনকৃত শাখা।<br><br><b>রোভার স্কাউট লিডার:</b> ফারুক হোসেন</p>
+                    </div>
+                    <div class="branch">
+                        <div class="num">রোভার ইউনিট - ০২</div>
+                        <h3> ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)</h3>
+                        <p>মেয়ে রোভার সদস্যদের জন্য নিবন্ধনকৃত শাখা।<br><br><b>রোভার স্কাউট লিডার:</b> মোরসালিনা আক্তার</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- নেতৃত্ব সেকশন -->
+        <section id="team" class="about">
+            <div class="container">
+                <div class="section-head">
+                    <span>নেতৃত্ব</span>
+                    <h2>গ্রুপ নেতৃত্ব ও সিনিয়র রোভার মেট</h2>
+                    <p>ব্যক্তিদের কার্ডে ক্লিক করে তাঁদের স্কাউটিং যাত্রা ও অভিজ্ঞতার বিস্তারিত দেখুন।</p>
+                </div>
+                <div class="team">
+
+                    <div class="person" data-person="lutfor">
+                        <div class="avatar">লু</div>
+                        <h3>প্রফেসর মোঃ লুৎফর রহমান</h3>
+                        <p>গ্রুপ সভাপতি</p>
+                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                    </div>
+
+                    <div class="person" data-person="saiful">
+                        <div class="avatar">
+                            <img src="গ্রুপ%20সম্পাদক.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
+                        </div>
+                        <h3>মো: সাইফুল ইসলাম - এএলটি</h3>
+                        <p>গ্রুপ সম্পাদক</p>
+                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                    </div>
+
+                    <div class="person" data-person="faruk">
+                        <div class="avatar">ফা</div>
+                        <h3>ফারুক হোসেন</h3>
+                        <p>রোভার স্কাউট লিডার<br>৮৪ নং ইউনিট</p>
+                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                    </div>
+
+                    <div class="person" data-person="morsalina">
+                        <div class="avatar">মো</div>
+                        <h3>মোরসালিনা আক্তার</h3>
+                        <p>রোভার স্কাউট লিডার<br>৮৫ নং ইউনিট (গার্ল)</p>
+                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                    </div>
+
+                    <div class="person" data-person="tanjim">
+                        <div class="avatar">
+                            <img src="সিনিয়র%20রোভার%20মেট%20-%20ছেলে.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
+                        </div>
+                        <h3>তানজীম তালুকদার জয়</h3>
+                        <p>সিনিয়র রোভার মেট<br>৮৪ নং ইউনিট</p>
+                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                    </div>
+
+                    <div class="person" data-person="tamanna">
+                        <div class="avatar">তা</div>
+                        <h3>মোছাঃ তামান্না খাতুন</h3>
+                        <p>সিনিয়র রোভার মেট<br>৮৫ নং ইউনিট (গার্ল)</p>
+                        <span class="view-profile">বিস্তারিত প্রোফাইল ↗</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- স্কাউটিং প্রোফাইল মডাল -->
+        <div class="scout-modal" id="scoutModal" role="dialog" aria-modal="true">
+            <div class="modal-box">
+                <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
+                <span class="modal-badge">স্কাউটিং যাত্রা ও বিবরণ</span>
+                <h3 id="modalName">নাম</h3>
+                <p class="sub-role" id="modalRole">পদবি</p>
+                <ul class="journey-timeline" id="modalJourney"></ul>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-head">
-        <span>যোগাযোগ</span>
-        <h2>স্কাউটিংয়ের যাত্রায় যুক্ত হোন আমাদের সাথে</h2>
-        <p>নিচের ফরমটি পূরণ করে সদস্য হওয়ার জন্য আবেদন করুন।</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-item"><div class="contact-icon">🏕️</div><div><b> বাংলাদেশ স্কাউটস এর অধিভুক্তি অঞ্চল সমূহ </b><span>বাংলাদেশ স্কাউট, ময়মনসিংহ অঞ্চল<br>বাংলাদেশ স্কাউট, রোভার অঞ্চল </span></div></div>
-          <div class="contact-item"><div class="contact-icon">📋</div><div><b> সদস্য ভর্তি</b><span> কাব স্কাউট, স্কাউট বা রোভার শাখায় যুক্ত হতে অনলাইন ভর্তি ফরমের মাধ্যমে আবেদন করুন</span></div></div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-item"><div class="contact-icon">📱</div><div><b>সিনিয়র রোভার মেট <br>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b><span>তানজীম তালুকদার জয় · 01595306172</span></div></div>
-          <div class="contact-item"><div class="contact-icon">📝</div><div><b>অনলাইন ভর্তি ফরম</b><span><a href="#apply" style="text-decoration:underline">ফরম পূরণ করুন →</a></span></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+        <section class="apply-section" id="apply">
+            <div class="container">
+                <div class="section-head">
+                    <span>অনলাইন ভর্তি</span>
+                    <h2>আমাদের সাথে যুক্ত হওয়ার জন্য অনলাইনে আবেদন করুন</h2>
+                    <p> সাধারণ কিছু তথ্য জমা দিয়ে নিচের ফরম পূরণ করে নিবন্ধন সম্পন্ন করুন। নিবন্ধন সফল হলে গ্রুপের পক্ষ থেকে আপনার সাথে আপনার দেওয়া WhatsApp নম্বর এ যোগাযোগ করবে এবং গ্রুপে যুক্ত করে নিবে। </p>
+                </div>
 
-<footer>
-  © 2026 Mymensingh Metropolitan Open Scout Group · Bangladesh Scout Mymensingh Region & Bangladesh Scouts Rover Region
-</footer>
+                <div class="apply-wrap">
+                    <div class="apply-info">
+                        <span class="tag">আবেদনের সাধারণ তথ্য সমূহ</span>
+                        <h3> স্কাউট সদস্য হিসেবে যুক্ত হোন</h3>
+                        <p>আপনার তথ্য সঠিকভাবে পূরণ করুন। আবেদন জমা দিতে কোন সমস্যা হলে বা কোন প্রশ্ন থাকলে সিনিয়র রোভার মেটদের সাথে যোগাযোগ করার জন্য অনুরোধ করা হলো </p>
+                        <ul class="apply-points">
+                            <li><span>✓</span><span>বাংলাদেশি ১১ ডিজিটের মোবাইল নম্বর প্রয়োজন</span></li>
+                            <li><span>✓</span><span>স্কাউটিং অভিজ্ঞতা থাকলে সংক্ষেপে লিখতে পারবেন</span></li>
+                            <li><span>✓</span><span> ছেলে ও মেয়ে—উভয়-ই আবেদন করতে পারবে</span></li>
+                            <li><span>✓</span><span>বর্তমানে রোভার স্কাউট শাখার পাশাপাশি সদস্য সংগ্রহ চলমান আছে।</span></li>
+                        </ul>
 
-<script>
-(() => {
-  /* --- ১. নেতৃত্ববৃন্দের ডেটা --- */
-  const leadersData = {
-    lutfor: {
-      name: 'প্রফেসর মোঃ লুৎফর রহমান',
-      role: 'গ্রুপ সভাপতি — ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
-      journey: [
-        'গ্রুপ সভাপতি, ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
-        'সহ-সভাপতি, বাংলাদেশ স্কাউটস, রোভার অঞ্চল',
-        'সাবেক জেলা সম্পাদক, বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার'
-      ]
-    },
-    saiful: {
-      name: 'মো: সাইফুল ইসলাম - এএলটি',
-      role: 'গ্রুপ সম্পাদক — ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
-      journey: [
-        'গ্রুপ সম্পাদক, ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
-        'সহকারী লিডার ট্রেনার (ALT), বাংলাদেশ স্কাউটস',
-        'জেলা সম্পাদক, বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার',
-        'সাবেক জেলা রোভার স্কাউট লিডার (DRSL), বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার'
-      ]
-    },
-    faruk: {
-      name: 'ফারুক হোসেন',
-      role: 'রোভার স্কাউট লিডার (RSL) — ৮৪ নং ইউনিট',
-      journey: [
-        'রোভার স্কাউট লিডার, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
-        'স্কাউট শাখায় স্কিল কোর্স (Skill Course) সফলভাবে সম্পন্ন'
-      ]
-    },
-    morsalina: {
-      name: 'মোরসালিনা আক্তার',
-      role: 'রোভার স্কাউট লিডার (RSL) — ৮৫ নং ইউনিট (গার্ল)',
-      journey: [
-        'রোভার স্কাউট লিডার, ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
-        'স্কাউট শাখায় স্কিল কোর্স (Skill Course) সফলভাবে সম্পন্ন'
-      ]
-    },
-    tanjim: {
-      name: 'তানজীম তালুকদার জয়',
-      role: 'সিনিয়র রোভার মেট (SRM) — ৮৪ নং ইউনিট',
-      journey: [
-        'সিনিয়র রোভার মেট, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
-        'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
-        'সাবেক সিনিয়র রোভার মেট, নাসিরাবাদ কলেজ রোভার স্কাউট গ্রুপ'
-      ]
-    },
-    tamanna: {
-      name: 'মোছাঃ তামান্না খাতুন',
-      role: 'সিনিয়র রোভার মেট (SRM) — ৮৫ নং ইউনিট (গার্ল)',
-      journey: [
-        'সিনিয়র রোভার মেট, ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
-        'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
-        'সাবেক সিনিয়র রোভার মেট'
-      ]
-    }
-  };
+                        <!-- ভর্তি সহায়িকা ও সরাসরি WhatsApp লিংক -->
+                        <div class="apply-helpline">
+                            <h4>💬 ভর্তি সংক্রান্ত সহায়তার জন্য যোগাযোগ</h4>
+                            <div class="helpline-box">
+                                <strong>তানজীম তালুকদার জয়</strong>
+                                <span>সিনিয়র রোভার মেট</span>
+                                <span>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</span>
+                                <a class="helpline-whatsapp" href="https://wa.me/8801595306172?text=স্কাউটিং%20ভর্তি%20সংক্রান্ত%20তথ্যের%20জন্য%20যোগাযোগ%20করছি" target="_blank" rel="noopener noreferrer">
+                                    <span>💬 WhatsApp : 01595306172</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-  const scoutModal = document.getElementById('scoutModal');
-  const modalName = document.getElementById('modalName');
-  const modalRole = document.getElementById('modalRole');
-  const modalJourney = document.getElementById('modalJourney');
-  const modalCloseBtn = document.getElementById('modalCloseBtn');
+                    <div class="apply-form-card">
+                        <form id="inlineRegistrationForm" novalidate autocomplete="off">
+                            <div class="form-grid">
 
-  document.querySelectorAll('.person[data-person]').forEach(card => {
-    card.addEventListener('click', () => {
-      const personKey = card.getAttribute('data-person');
-      const data = leadersData[personKey];
-      if (!data) return;
+                                <div class="form-group full">
+                                    <label class="form-label" for="applyBranch">আপনি কোন শাখায় যুক্ত হতে চান? <span class="required">*</span></label>
+                                    <select class="form-control" id="applyBranch" name="scout_branch" required>
+                                        <option value="" selected disabled>-- শাখা নির্বাচন করুন --</option>
+                                        <option value="কাব স্কাউট">কাব স্কাউট</option>
+                                        <option value="স্কাউট">স্কাউট</option>
+                                        <option value="রোভার স্কাউট">রোভার স্কাউট</option>
+                                    </select>
+                                </div>
 
-      modalName.textContent = data.name;
-      modalRole.textContent = data.role;
-      modalJourney.innerHTML = data.journey.map(item => `
-        <li>
-          <span class="icon">⚜</span>
-          <div>${item}</div>
-        </li>
-      `).join('');
+                                <div class="form-group full">
+                                    <label class="form-label" for="applyDOB">জন্মতারিখ <span class="required">*</span></label>
+                                    <input class="form-control" id="applyDOB" name="dob" type="date" required>
+                                </div>
 
-      scoutModal.classList.add('show');
-    });
-  });
+                                <div class="form-group">
+                                    <label class="form-label" for="applyName">নাম <span class="required">*</span></label>
+                                    <input class="form-control" id="applyName" name="name" type="text" placeholder="আপনার পূর্ণ নাম লিখুন" maxlength="100" required>
+                                </div>
 
-  const closeModal = () => scoutModal.classList.remove('show');
-  modalCloseBtn.addEventListener('click', closeModal);
-  scoutModal.addEventListener('click', (e) => {
-    if (e.target === scoutModal) closeModal();
-  });
+                                <div class="form-group">
+                                    <label class="form-label" for="applyMobile"> অভিভাবকের মোবাইল নম্বর <span class="required">*</span></label>
+                                    <input class="form-control" id="applyMobile" name="mobile" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" required>
+                                    <span class="form-hint">বাংলাদেশি মোবাইল নম্বর (১১ ডিজিট)</span>
+                                </div>
 
-  /* --- ২. ভর্তি ফরম ও ডায়নামিক ক্লাস হ্যান্ডলিং --- */
-  const form = document.getElementById('inlineRegistrationForm');
-  if (!form) return;
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCLeC9kAeyqpO5R3By-XBwODWGfZRqf-vxZDoaz7eqKPCYcDxDGNNXoQZXIKiWwwjTcw/exec';
-  const phoneRegex = /^01[3-9]\d{8}$/;
-  const status = document.getElementById('inlineFormStatus');
-  const submitBtn = document.getElementById('inlineSubmitBtn');
-  const detailsBox = document.getElementById('inlineDetailsBox');
-  const details = document.getElementById('applyDetails');
-  const count = document.getElementById('detailsCountInline');
+                                <div class="form-group">
+                                    <label class="form-label" for="applyWhatsapp"> ব্যক্তিগত WhatsApp নম্বর <span class="required">*</span></label>
+                                    <input class="form-control" id="applyWhatsapp" name="whatsapp" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" required>
+                                </div>
 
-  const branchSelect = document.getElementById('applyBranch');
-  const classSelect = document.getElementById('applyClass');
-  const subjectGroupWrap = document.getElementById('subjectGroupWrap');
-  const applySubject = document.getElementById('applySubject');
+                                <div class="form-group">
+                                    <label class="form-label" for="applyInstitution">প্রতিষ্ঠানের নাম <span class="required">*</span></label>
+                                    <input class="form-control" id="applyInstitution" name="institution" type="text" maxlength="150" placeholder="আপনার প্রতিষ্ঠানের নাম লিখুন" required>
+                                </div>
 
-  const classData = {
-    'কাব স্কাউট': [
-      { val: 'Class 1', label: 'Class 1 (১ম শ্রেণি)' },
-      { val: 'Class 2', label: 'Class 2 (২য় শ্রেণি)' },
-      { val: 'Class 3', label: 'Class 3 (৩য় শ্রেণি)' },
-      { val: 'Class 4', label: 'Class 4 (৪র্থ শ্রেণি)' },
-      { val: 'Class 5', label: 'Class 5 (৫ম শ্রেণি)' }
-    ],
-    'স্কাউট': [
-      { val: 'Class 6', label: 'Class 6 (৬ষ্ঠ শ্রেণি)' },
-      { val: 'Class 7', label: 'Class 7 (৭ম শ্রেণি)' },
-      { val: 'Class 8', label: 'Class 8 (৮ম শ্রেণি)' },
-      { val: 'Class 9', label: 'Class 9 (৯ম শ্রেণি)' },
-      { val: 'Class 10', label: 'Class 10 (১০ম শ্রেণি)' }
-    ],
-    'রোভার স্কাউট': [
-      { val: 'Class 11', label: 'Class 11 (একাদশ)' },
-      { val: 'Class 12', label: 'Class 12 (দ্বাদশ)' },
-      { val: 'Diploma / Polytechnic', label: 'Diploma / Polytechnic' },
-      { val: 'Honours 1st Year', label: 'অনার্স ১ম বর্ষ / ডিগ্রি ১ম বর্ষ' },
-      { val: 'Honours 2nd Year', label: 'অনার্স ২য় বর্ষ / ডিগ্রি ২য় বর্ষ' },
-      { val: 'Honours 3rd Year', label: 'অনার্স ৩য় বর্ষ / ডিগ্রি ৩য় বর্ষ' },
-      { val: 'Honours 4th Year', label: 'অনার্স ৪র্থ বর্ষ' },
-      { val: 'Other', label: 'অন্যান্য (বিশ্ববিদ্যালয় স্তর)' }
-    ]
-  };
+                                <div class="form-group">
+                                    <label class="form-label" for="applyClass">বর্তমান ক্লাস <span class="required">*</span></label>
+                                    <select class="form-control" id="applyClass" name="class" required>
+                                        <option value="" selected disabled>-- আগে শাখা নির্বাচন করুন --</option>
+                                    </select>
+                                </div>
 
-  branchSelect.addEventListener('change', () => {
-    const selected = branchSelect.value;
-    classSelect.innerHTML = '<option value="" selected disabled>-- ক্লাস নির্বাচন করুন --</option>';
+                                <div class="form-group" id="subjectGroupWrap" style="display: none;">
+                                    <label class="form-label" for="applySubject">বিষয় / গ্রুপ</label>
+                                    <input class="form-control" id="applySubject" name="subject_group" type="text" maxlength="100" placeholder="যেমন: Science, Humanities, Accounting">
+                                    <span class="form-hint">ঐচ্ছিক</span>
+                                </div>
 
-    if (classData[selected]) {
-      classData[selected].forEach(item => {
-        const opt = document.createElement('option');
-        opt.value = item.val;
-        opt.textContent = item.label;
-        classSelect.appendChild(opt);
-      });
-    }
+                                <div class="form-group">
+                                    <span class="form-label">জেন্ডার <span class="required">*</span></span>
+                                    <div class="radio-row">
+                                        <div class="radio-option"><input id="genderMaleInline" type="radio" name="gender" value="ছেলে" required><label for="genderMaleInline">👦 ছেলে</label></div>
+                                        <div class="radio-option"><input id="genderFemaleInline" type="radio" name="gender" value="মেয়ে"><label for="genderFemaleInline">👧 মেয়ে</label></div>
+                                    </div>
+                                </div>
 
-    if (selected === 'রোভার স্কাউট') {
-      subjectGroupWrap.style.display = 'flex';
-    } else {
-      subjectGroupWrap.style.display = 'none';
-      applySubject.value = '';
-    }
-  });
+                                <div class="form-group">
+                                    <span class="form-label">পূর্বে স্কাউটিং এর অভিজ্ঞতা আছে? <span class="required">*</span></span>
+                                    <div class="radio-row">
+                                        <div class="radio-option"><input id="expYesInline" type="radio" name="scouting_experience" value="হ্যাঁ" required><label for="expYesInline">✅ হ্যাঁ</label></div>
+                                        <div class="radio-option"><input id="expNoInline" type="radio" name="scouting_experience" value="না"><label for="expNoInline">❌ না</label></div>
+                                    </div>
+                                </div>
 
-  document.querySelectorAll('input[name="scouting_experience"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      const yes = document.getElementById('expYesInline').checked;
-      detailsBox.classList.toggle('show', yes);
-      if (!yes) details.value = '';
-    });
-  });
-  details.addEventListener('input', () => count.textContent = details.value.length);
+                                <div class="form-group full details-box" id="inlineDetailsBox">
+                                    <label class="form-label" for="applyDetails">স্কাউটিংয়ের অভিজ্ঞতা সংক্ষেপে লিখুন</label>
+                                    <textarea class="form-control" id="applyDetails" name="scouting_details" rows="4" maxlength="500" placeholder="আপনার স্কাউটিং অভিজ্ঞতা সম্পর্কে সংক্ষেপে লিখুন..."></textarea>
+                                    <span class="form-hint"><span id="detailsCountInline">0</span> / 500 characters</span>
+                                </div>
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    status.className = 'form-status';
-    status.textContent = '';
+                                <div class="form-submit">
+                                    <button class="btn btn-primary" id="inlineSubmitBtn" type="submit">📝 নিবন্ধন সম্পন্ন করুন</button>
+                                    <span class="form-status" id="inlineFormStatus" role="status" aria-live="polite"></span>
+                                </div>
+                                <p class="form-note form-group full">🔒 আপনার তথ্য শুধুমাত্র স্কাউট নিবন্ধনের কাজে ব্যবহার করা হবে।</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    const data = Object.fromEntries(new FormData(form).entries());
-    if (!data.scout_branch || !data.dob || !data.name?.trim() || !data.institution?.trim() || !data.class || !data.gender || !data.scouting_experience) {
-      status.className = 'form-status error';
-      status.textContent = '⚠️ অনুগ্রহ করে সব প্রয়োজনীয় তথ্য পূরণ করুন।';
-      return;
-    }
-    if (!phoneRegex.test(data.mobile?.trim()) || !phoneRegex.test(data.whatsapp?.trim())) {
-      status.className = 'form-status error';
-      status.textContent = '⚠️ মোবাইল ও WhatsApp নম্বর সঠিক ১১ ডিজিটে দিন (যেমন: 017XXXXXXXX)।';
-      return;
-    }
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-head">
+                    <span>যোগাযোগ</span>
+                    <h2>স্কাউটিংয়ের যাত্রায় যুক্ত হোন আমাদের সাথে</h2>
+                    <p>নিচের ফরমটি পূরণ করে সদস্য হওয়ার জন্য আবেদন করুন।</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-item">
+                            <div class="contact-icon">🏕️</div>
+                            <div><b> বাংলাদেশ স্কাউটস এর অধিভুক্তি অঞ্চল সমূহ </b><span>বাংলাদেশ স্কাউট, ময়মনসিংহ অঞ্চল<br>বাংলাদেশ স্কাউট, রোভার অঞ্চল </span></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📋</div>
+                            <div><b> সদস্য ভর্তি</b><span> কাব স্কাউট, স্কাউট বা রোভার শাখায় যুক্ত হতে অনলাইন ভর্তি ফরমের মাধ্যমে আবেদন করুন</span></div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div><b>সিনিয়র রোভার মেট <br>ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b><span>তানজীম তালুকদার জয় · 01595306172</span></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📝</div>
+                            <div><b>অনলাইন ভর্তি ফরম</b><span><a href="#apply" style="text-decoration:underline">ফরম পূরণ করুন →</a></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = '.7';
-    submitBtn.textContent = '⏳ তথ্য জমা হচ্ছে...';
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams(data)
-      });
-      form.reset();
-      classSelect.innerHTML = '<option value="" selected disabled>-- আগে শাখা নির্বাচন করুন --</option>';
-      subjectGroupWrap.style.display = 'none';
-      detailsBox.classList.remove('show');
-      count.textContent = '0';
-      status.className = 'form-status success';
-      status.textContent = '✅ আপনার তথ্য সফলভাবে জমা হয়েছে। ধন্যবাদ!';
-    } catch (err) {
-      status.className = 'form-status error';
-      status.textContent = '❌ তথ্য জমা দেওয়া যায়নি। কিছুক্ষণ পর আবার চেষ্টা করুন।';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = '1';
-      submitBtn.textContent = '📝 নিবন্ধন সম্পন্ন করুন';
-    }
-  });
-})();
-</script>
+    <footer>
+        © 2026 Mymensingh Metropolitan Open Scout Group · Bangladesh Scout Mymensingh Region & Bangladesh Scouts Rover Region
+    </footer>
+
+    <script>
+        (() => {
+            /* --- ১. নেতৃত্ববৃন্দের ডেটা --- */
+            const leadersData = {
+                lutfor: {
+                    name: 'প্রফেসর মোঃ লুৎফর রহমান',
+                    role: 'গ্রুপ সভাপতি — ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+                    journey: [
+                        'গ্রুপ সভাপতি, ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+                        'সহ-সভাপতি, বাংলাদেশ স্কাউটস, রোভার অঞ্চল',
+                        'সাবেক জেলা সম্পাদক, বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার'
+                    ]
+                },
+                saiful: {
+                    name: 'মো: সাইফুল ইসলাম - এএলটি',
+                    role: 'গ্রুপ সম্পাদক — ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+                    journey: [
+                        'গ্রুপ সম্পাদক, ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+                        'সহকারী লিডার ট্রেনার (ALT), বাংলাদেশ স্কাউটস',
+                        'জেলা সম্পাদক, বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার',
+                        'সাবেক জেলা রোভার স্কাউট লিডার (DRSL), বাংলাদেশ স্কাউটস, ময়মনসিংহ জেলা রোভার'
+                    ]
+                },
+                faruk: {
+                    name: 'ফারুক হোসেন',
+                    role: 'রোভার স্কাউট লিডার — ৮৪ নং ইউনিট',
+                    journey: [
+                        'রোভার স্কাউট লিডার, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+                        'রোভার স্কাউট শাখায় স্কিল কোর্স (Skill Course) সফলভাবে সম্পন্ন'
+                    ]
+                },
+                morsalina: {
+                    name: 'মোরসালিনা আক্তার',
+                    role: 'রোভার স্কাউট লিডার — ৮৫ নং ইউনিট (গার্ল)',
+                    journey: [
+                        'রোভার স্কাউট লিডার, ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
+                        'রোভার স্কাউট শাখায় স্কিল কোর্স (Skill Course) সফলভাবে সম্পন্ন'
+                    ]
+                },
+                tanjim: {
+                    name: 'তানজীম তালুকদার জয়',
+                    role: 'সিনিয়র রোভার মেট (SRM) — ৮৪ নং ইউনিট',
+                    journey: [
+                        'সিনিয়র রোভার মেট, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
+                        'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
+                        'সাবেক সিনিয়র রোভার মেট, নাসিরাবাদ কলেজ রোভার স্কাউট গ্রুপ'
+                    ]
+                },
+                tamanna: {
+                    name: 'মোছাঃ তামান্না খাতুন',
+                    role: 'সিনিয়র রোভার মেট (SRM) — ৮৫ নং ইউনিট (গার্ল)',
+                    journey: [
+                        'সিনিয়র রোভার মেট, ৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)',
+                        'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
+                        'সাবেক সিনিয়র রোভার মেট'
+                    ]
+                }
+            };
+
+            const scoutModal = document.getElementById('scoutModal');
+            const modalName = document.getElementById('modalName');
+            const modalRole = document.getElementById('modalRole');
+            const modalJourney = document.getElementById('modalJourney');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+            document.querySelectorAll('.person[data-person]').forEach(card => {
+                card.addEventListener('click', () => {
+                    const personKey = card.getAttribute('data-person');
+                    const data = leadersData[personKey];
+                    if (!data) return;
+
+                    modalName.textContent = data.name;
+                    modalRole.textContent = data.role;
+                    modalJourney.innerHTML = data.journey.map(item => `
+                        <li>
+                            <span class="icon">⚜</span>
+                            <div>${item}</div>
+                        </li>
+                    `).join('');
+
+                    scoutModal.classList.add('show');
+                });
+            });
+
+            const closeModal = () => scoutModal.classList.remove('show');
+            modalCloseBtn.addEventListener('click', closeModal);
+            scoutModal.addEventListener('click', (e) => {
+                if (e.target === scoutModal) closeModal();
+            });
+
+            /* --- ২. ভর্তি ফরম ও ডায়নামিক ক্লাস হ্যান্ডলিং --- */
+            const form = document.getElementById('inlineRegistrationForm');
+            if (!form) return;
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCLeC9kAeyqpO5R3By-XBwODWGfZRqf-vxZDoaz7eqKPCYcDxDGNNXoQZXIKiWwwjTcw/exec';
+            const phoneRegex = /^01[3-9]\d{8}$/;
+            const status = document.getElementById('inlineFormStatus');
+            const submitBtn = document.getElementById('inlineSubmitBtn');
+            const detailsBox = document.getElementById('inlineDetailsBox');
+            const details = document.getElementById('applyDetails');
+            const count = document.getElementById('detailsCountInline');
+
+            const branchSelect = document.getElementById('applyBranch');
+            const classSelect = document.getElementById('applyClass');
+            const subjectGroupWrap = document.getElementById('subjectGroupWrap');
+            const applySubject = document.getElementById('applySubject');
+
+            const classData = {
+                'কাব স্কাউট': [{
+                        val: 'Class 1',
+                        label: 'Class 1 (১ম শ্রেণি)'
+                    },
+                    {
+                        val: 'Class 2',
+                        label: 'Class 2 (২য় শ্রেণি)'
+                    },
+                    {
+                        val: 'Class 3',
+                        label: 'Class 3 (৩য় শ্রেণি)'
+                    },
+                    {
+                        val: 'Class 4',
+                        label: 'Class 4 (৪র্থ শ্রেণি)'
+                    },
+                    {
+                        val: 'Class 5',
+                        label: 'Class 5 (৫ম শ্রেণি)'
+                    }
+                ],
+                'স্কাউট': [{
+                        val: 'Class 6',
+                        label: 'Class 6 (৬ষ্ঠ শ্রেণি)'
+                    },
+                    {
+                        val: 'Class 7',
+                        label: 'Class 7 (৭ম শ্রেণি)'
+                    },
+                    {
+                        val: 'Class 8',
+                        label: 'Class 8 (৮ম শ্রেণি)'
+                    },
+                    {
+                        val: 'Class 9',
+                        label: 'Class 9 (৯ম শ্রেণি)'
+                    },
+                    {
+                        val: 'Class 10',
+                        label: 'Class 10 (১০ম শ্রেণি)'
+                    }
+                ],
+                'রোভার স্কাউট': [{
+                        val: 'Class 11',
+                        label: 'Class 11 (একাদশ)'
+                    },
+                    {
+                        val: 'Class 12',
+                        label: 'Class 12 (দ্বাদশ)'
+                    },
+                    {
+                        val: 'Diploma / Polytechnic',
+                        label: 'Diploma / Polytechnic'
+                    },
+                    {
+                        val: 'Honours 1st Year',
+                        label: 'অনার্স ১ম বর্ষ / ডিগ্রি ১ম বর্ষ'
+                    },
+                    {
+                        val: 'Honours 2nd Year',
+                        label: 'অনার্স ২য় বর্ষ / ডিগ্রি ২য় বর্ষ'
+                    },
+                    {
+                        val: 'Honours 3rd Year',
+                        label: 'অনার্স ৩য় বর্ষ / ডিগ্রি ৩য় বর্ষ'
+                    },
+                    {
+                        val: 'Honours 4th Year',
+                        label: 'অনার্স ৪র্থ বর্ষ'
+                    },
+                    {
+                        val: 'Other',
+                        label: 'অন্যান্য (বিশ্ববিদ্যালয় স্তর)'
+                    }
+                ]
+            };
+
+            branchSelect.addEventListener('change', () => {
+                const selected = branchSelect.value;
+                classSelect.innerHTML = '<option value="" selected disabled>-- ক্লাস নির্বাচন করুন --</option>';
+
+                if (classData[selected]) {
+                    classData[selected].forEach(item => {
+                        const opt = document.createElement('option');
+                        opt.value = item.val;
+                        opt.textContent = item.label;
+                        classSelect.appendChild(opt);
+                    });
+                }
+
+                if (selected === 'রোভার স্কাউট') {
+                    subjectGroupWrap.style.display = 'flex';
+                } else {
+                    subjectGroupWrap.style.display = 'none';
+                    applySubject.value = '';
+                }
+            });
+
+            document.querySelectorAll('input[name="scouting_experience"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const yes = document.getElementById('expYesInline').checked;
+                    detailsBox.classList.toggle('show', yes);
+                    if (!yes) details.value = '';
+                });
+            });
+            details.addEventListener('input', () => count.textContent = details.value.length);
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                status.className = 'form-status';
+                status.textContent = '';
+
+                const data = Object.fromEntries(new FormData(form).entries());
+                if (!data.scout_branch || !data.dob || !data.name?.trim() || !data.institution?.trim() || !data.class || !data.gender || !data.scouting_experience) {
+                    status.className = 'form-status error';
+                    status.textContent = '⚠️ অনুগ্রহ করে সব প্রয়োজনীয় তথ্য পূরণ করুন।';
+                    return;
+                }
+                if (!phoneRegex.test(data.mobile?.trim()) || !phoneRegex.test(data.whatsapp?.trim())) {
+                    status.className = 'form-status error';
+                    status.textContent = '⚠️ মোবাইল ও WhatsApp নম্বর সঠিক ১১ ডিজিটে দিন (যেমন: 017XXXXXXXX)।';
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '.7';
+                submitBtn.textContent = '⏳ তথ্য জমা হচ্ছে...';
+                try {
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams(data)
+                    });
+                    form.reset();
+                    classSelect.innerHTML = '<option value="" selected disabled>-- আগে শাখা নির্বাচন করুন --</option>';
+                    subjectGroupWrap.style.display = 'none';
+                    detailsBox.classList.remove('show');
+                    count.textContent = '0';
+                    status.className = 'form-status success';
+                    status.textContent = '✅ আপনার তথ্য সফলভাবে জমা হয়েছে। ধন্যবাদ!';
+                } catch (err) {
+                    status.className = 'form-status error';
+                    status.textContent = '❌ তথ্য জমা দেওয়া যায়নি। কিছুক্ষণ পর আবার চেষ্টা করুন।';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.textContent = '📝 নিবন্ধন সম্পন্ন করুন';
+                }
+            });
+        })();
+    </script>
 
 </body>
+
 </html>
