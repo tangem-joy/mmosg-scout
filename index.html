@@ -988,7 +988,7 @@
         <div class="container nav">
             <a class="brand" href="#home">
                 <div class="mark">
-                    <img src="group-logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
+                    <img src="Group Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
                 </div>
                 <div>
                     <small>বাংলাদেশ স্কাউট</small>
@@ -998,7 +998,7 @@
             <nav>
                 <a href="#meetings">মিটিং সময়সূচি</a>
                 <a href="#about">পরিচিতি</a>
-                <a href="#branches">শাখা</a>
+                <a href="#branches"> শাখা</a>
                 <a href="#team">নেতৃত্ব</a>
                 <a class="nav-btn" href="#apply">ভর্তি ফরম ↗</a>
             </nav>
@@ -1020,7 +1020,7 @@
 
                 <div class="hero-card">
                     <div class="crest">
-                        <img src="group-logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
+                        <img src="Group Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
                     </div>
                     <h3> রোভার স্কাউট শাখার দুইটি নিবন্ধিত ইউনিট রয়েছে </h3>
                     <div class="mini-stats">
@@ -1127,7 +1127,7 @@
 
                         <div class="person" data-person="saiful">
                             <div class="avatar">
-                                <img src="group-secretary.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
+                                <img src="গ্রুপ সম্পাদক.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
                             </div>
                             <h3>মো: সাইফুল ইসলাম - এএলটি</h3>
                             <p>গ্রুপ সম্পাদক</p>
@@ -1162,7 +1162,7 @@
                     <div class="team">
                         <div class="person" data-person="tanjim">
                             <div class="avatar">
-                                <img src="senior-rover-mate.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
+                                <img src="সিনিয়র রোভার মেট - ছেলে.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
                             </div>
                             <h3>তানজীম তালুকদার জয়</h3>
                             <p>সিনিয়র রোভার মেট<br>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</p>
@@ -1452,7 +1452,6 @@
             const form = document.getElementById('inlineRegistrationForm');
             if (!form) return;
             
-            // আপনার সক্রিয় করা গুগল অ্যাপস স্ক্রিপ্ট ওয়েব অ্যাপ URL
             const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPgrPxLaisifOeBkRIiW4Dfra8gENmdzC8cQSfZGBZLxvILLrCU8EOWPeQcMBO3WCmoA/exec';
             
             const phoneRegex = /^01[3-9]\d{8}$/;
@@ -1463,7 +1462,6 @@
             const count = document.getElementById('detailsCountInline');
             const dobInput = document.getElementById('applyDOB');
 
-            // জন্মতারিখ ভবিষ্যতের হতে পারবে না। (UTC নয়, ব্রাউজারের স্থানীয় তারিখ ব্যবহার করা হয়।)
             if (dobInput) {
                 const today = new Date();
                 const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
@@ -1621,8 +1619,6 @@
                         formBody.append(key, typeof data[key] === 'string' ? data[key].trim() : data[key]);
                     }
 
-                    // Google Apps Script Web App-এ CORS response সবসময় পাওয়া যায় না,
-                    // তাই no-cors ব্যবহার করা হয়েছে। Network-level error হলে তবেই failure দেখানো হবে।
                     await fetch(SCRIPT_URL, {
                         method: 'POST',
                         mode: 'no-cors',
