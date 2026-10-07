@@ -1435,11 +1435,18 @@
                 });
             });
 
-            const closeModal = () => scoutModal.classList.remove('show');
-            modalCloseBtn.addEventListener('click', closeModal);
-            scoutModal.addEventListener('click', (e) => {
-                if (e.target === scoutModal) closeModal();
-            });
+            const closeModal = () => {
+                if (scoutModal) scoutModal.classList.remove('show');
+            };
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+            if (scoutModal) {
+                scoutModal.addEventListener('click', (e) => {
+                    if (e.target === scoutModal) closeModal();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && scoutModal.classList.contains('show')) closeModal();
+                });
+            }
 
             /* --- ২. ভর্তি ফরম ও ডায়নামিক ক্লাস হ্যান্ডলিং --- */
             const form = document.getElementById('inlineRegistrationForm');
@@ -1456,9 +1463,12 @@
             const count = document.getElementById('detailsCountInline');
             const dobInput = document.getElementById('applyDOB');
 
-            // জন্মতারিখ ভবিষ্যতের হতে পারবে না।
+            // জন্মতারিখ ভবিষ্যতের হতে পারবে না। (UTC নয়, ব্রাউজারের স্থানীয় তারিখ ব্যবহার করা হয়।)
             if (dobInput) {
-                dobInput.max = new Date().toISOString().slice(0, 10);
+                const today = new Date();
+                const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+                    .toISOString().slice(0, 10);
+                dobInput.max = localToday;
             }
 
             const branchSelect = document.getElementById('applyBranch');
@@ -1544,6 +1554,8 @@
                 ]
             };
 
+            if (!branchSelect || !classSelect || !subjectGroupWrap || !applySubject) return;
+
             branchSelect.addEventListener('change', () => {
                 const selected = branchSelect.value;
                 classSelect.innerHTML = '<option value="" selected disabled>-- ক্লাস নির্বাচন করুন --</option>';
@@ -1572,7 +1584,9 @@
                     if (!yes) details.value = '';
                 });
             });
-            details.addEventListener('input', () => count.textContent = details.value.length);
+            if (details && count) {
+                details.addEventListener('input', () => count.textContent = details.value.length);
+            }
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -1623,7 +1637,7 @@
                     classSelect.innerHTML = '<option value="" selected disabled>-- আগে শাখা নির্বাচন করুন --</option>';
                     subjectGroupWrap.style.display = 'none';
                     detailsBox.classList.remove('show');
-                    count.textContent = '0';
+                    if (count) count.textContent = '0';
                     status.className = 'form-status success';
                     status.textContent = '✅ আপনার তথ্য সফলভাবে জমা হয়েছে। ধন্যবাদ!';
                 } catch (err) {
