@@ -277,11 +277,6 @@
             line-height: 1.3
         }
 
-        .stat span {
-            font-size: 12px;
-            color: var(--muted)
-        }
-
         section {
             padding: 82px 0
         }
@@ -305,6 +300,59 @@
         .section-head p {
             color: var(--muted);
             margin: 0
+        }
+
+        /* মিটিং শিডিউল সেকশন */
+        .meetings-section {
+            background: #f4fbf6;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .meetings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .meeting-box {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 8px 24px rgba(5, 64, 34, .04);
+            transition: transform .2s ease, border-color .2s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meeting-box:hover {
+            transform: translateY(-4px);
+            border-color: var(--green);
+        }
+
+        .meeting-tag {
+            align-self: flex-start;
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--green-soft);
+            color: var(--green-dark);
+            padding: 4px 10px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+
+        .meeting-box h3 {
+            font-size: 22px;
+            margin: 0 0 10px;
+            color: var(--ink);
+        }
+
+        .meeting-box p {
+            margin: 0;
+            color: #495b52;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         .about {
@@ -882,7 +930,8 @@
             .hero-grid,
             .about-grid,
             .contact-grid,
-            .apply-wrap {
+            .apply-wrap,
+            .meetings-grid {
                 grid-template-columns: 1fr
             }
 
@@ -939,7 +988,7 @@
         <div class="container nav">
             <a class="brand" href="#home">
                 <div class="mark">
-                    <img src="Group%20Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
+                    <img src="image/group-logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
                 </div>
                 <div>
                     <small>বাংলাদেশ স্কাউট</small>
@@ -947,6 +996,7 @@
                 </div>
             </a>
             <nav>
+                <a href="#meetings">মিটিং সময়সূচি</a>
                 <a href="#about">পরিচিতি</a>
                 <a href="#branches">শাখা</a>
                 <a href="#team">নেতৃত্ব</a>
@@ -970,10 +1020,9 @@
 
                 <div class="hero-card">
                     <div class="crest">
-                        <img src="Group%20Logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
+                        <img src="image/group-logo.jpeg" alt="Group Logo" onerror="this.parentElement.innerHTML='⚜'">
                     </div>
                     <h3> রোভার স্কাউট শাখার দুইটি নিবন্ধিত ইউনিট রয়েছে </h3>
-                    <p>ছেলে ও মেয়ে রোভার সদস্যদের জন্য পৃথক শাখা</p>
                     <div class="mini-stats">
                         <div class="stat">
                             <b>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b>
@@ -981,6 +1030,34 @@
                         <div class="stat">
                             <b>৮৫ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ (গার্ল)</b>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- সাপ্তাহিক মিটিং সময়সূচি সেকশন -->
+        <section class="meetings-section" id="meetings">
+            <div class="container">
+                <div class="section-head">
+                    <span>নিয়মিত কার্যক্রম</span>
+                    <h2>সাপ্তাহিক প্যাক মিটিং, ট্রুপ মিটিং ও ক্রু মিটিংয়ের সময়সূচি</h2>
+                    <p>দলের শৃঙ্খলা ও দক্ষতা বৃদ্ধির নিয়মিত সাপ্তাহিক সমাবেশ।</p>
+                </div>
+                <div class="meetings-grid">
+                    <div class="meeting-box">
+                        <span class="meeting-tag">প্যাক মিটিং</span>
+                        <h3>কাব স্কাউট</h3>
+                        <p>প্রতি শুক্রবার বিকাল ৫ টার সময়ে অনুষ্ঠিত হয়, মিটিংয়ের বিস্তারিত তথ্য সময় মতো গ্রুপে সরবরাহ করা হয়।</p>
+                    </div>
+                    <div class="meeting-box">
+                        <span class="meeting-tag">ট্রুপ মিটিং</span>
+                        <h3>স্কাউট</h3>
+                        <p>প্রতি শুক্রবার বিকাল ৫ টার সময়ে অনুষ্ঠিত হয়, মিটিংয়ের বিস্তারিত তথ্য সময় মতো গ্রুপে সরবরাহ করা হয়।</p>
+                    </div>
+                    <div class="meeting-box">
+                        <span class="meeting-tag">ক্রু মিটিং</span>
+                        <h3>রোভার স্কাউট</h3>
+                        <p>প্রতি শুক্রবার বিকাল ৫ টার সময়ে অনুষ্ঠিত হয়, মিটিংয়ের বিস্তারিত তথ্য সময় মতো গ্রুপে সরবরাহ করা হয়।</p>
                     </div>
                 </div>
             </div>
@@ -1050,7 +1127,7 @@
 
                         <div class="person" data-person="saiful">
                             <div class="avatar">
-                                <img src="গ্রুপ%20সম্পাদক.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
+                                <img src="image/group-secretary.png" alt="মো: সাইফুল ইসলাম" onerror="this.parentElement.innerText='সা'">
                             </div>
                             <h3>মো: সাইফুল ইসলাম - এএলটি</h3>
                             <p>গ্রুপ সম্পাদক</p>
@@ -1085,7 +1162,7 @@
                     <div class="team">
                         <div class="person" data-person="tanjim">
                             <div class="avatar">
-                                <img src="সিনিয়র%20রোভার%20মেট%20-%20ছেলে.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
+                                <img src="image/senior-rover-mate.jpeg" alt="তানজীম তালুকদার জয়" onerror="this.parentElement.innerText='জয়'">
                             </div>
                             <h3>তানজীম তালুকদার জয়</h3>
                             <p>সিনিয়র রোভার মেট<br>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</p>
@@ -1150,7 +1227,7 @@
                     </div>
 
                     <div class="apply-form-card">
-                        <form id="inlineRegistrationForm" novalidate autocomplete="off">
+                        <form id="inlineRegistrationForm" autocomplete="off">
                             <div class="form-grid">
 
                                 <div class="form-group full">
@@ -1256,8 +1333,8 @@
                     </div>
                     <div class="contact-card">
                         <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div><b>সিনিয়র রোভার মেট <br>৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ</b><span>তানজীম তালুকদার জয় · 01595306172</span></div>
+                            <div class="contact-icon">👥</div>
+                            <div><b>ক্রু-মিটিং সময়সূচি</b><span>প্রতি শুক্রবার বিকাল ৫ টায় আমাদের সাপ্তাহিক ক্রু মিটিং হয়। বিস্তারিত নোটিশ WhatsApp গ্রুপে প্রদান করা হয়।</span></div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📝</div>
@@ -1270,7 +1347,8 @@
     </main>
 
     <footer>
-        © 2026 Mymensingh Metropolitan Open Scout Group · Bangladesh Scout Mymensingh Region & Bangladesh Scouts Rover Region
+        © 2026 Mymensingh Metropolitan Open Scout Group ·
+        <br> কারিগরি সহায়তায় তানজীম তালুকদার জয়, সিনিয়র রোভার মেট, ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ
     </footer>
 
     <script>
@@ -1318,7 +1396,7 @@
                     journey: [
                         'সিনিয়র রোভার মেট, ৮৪ নং ময়মনসিংহ মেট্রোপলিটন ওপেন স্কাউট গ্রুপ',
                         'স্কাউট শাখায় বেসিক কোর্স (Basic Course) সফলভাবে সম্পন্ন',
-                        'সাবেক সিনিয়র রোভার মেট, নাসিরাবাদ কলেজ রোভার স্কাউট গ্রুপ'
+                        'সাবেক সিনিয়র রোভার মেট, ০৫ নং নাসিরাবাদ কলেজ রোভার স্কাউট গ্রুপ'
                     ]
                 },
                 tamanna: {
@@ -1376,6 +1454,12 @@
             const detailsBox = document.getElementById('inlineDetailsBox');
             const details = document.getElementById('applyDetails');
             const count = document.getElementById('detailsCountInline');
+            const dobInput = document.getElementById('applyDOB');
+
+            // জন্মতারিখ ভবিষ্যতের হতে পারবে না।
+            if (dobInput) {
+                dobInput.max = new Date().toISOString().slice(0, 10);
+            }
 
             const branchSelect = document.getElementById('applyBranch');
             const classSelect = document.getElementById('applyClass');
@@ -1496,9 +1580,15 @@
                 status.textContent = '';
 
                 const data = Object.fromEntries(new FormData(form).entries());
-                if (!data.scout_branch || !data.dob || !data.name?.trim() || !data.institution?.trim() || !data.class || !data.gender || !data.scouting_experience) {
+                if (!form.checkValidity()) {
+                    form.reportValidity();
                     status.className = 'form-status error';
-                    status.textContent = '⚠️ অনুগ্রহ করে সব প্রয়োজনীয় তথ্য পূরণ করুন।';
+                    status.textContent = '⚠️ অনুগ্রহ করে সব প্রয়োজনীয় তথ্য সঠিকভাবে পূরণ করুন।';
+                    return;
+                }
+                if (dobInput && dobInput.value > dobInput.max) {
+                    status.className = 'form-status error';
+                    status.textContent = '⚠️ জন্মতারিখ ভবিষ্যতের হতে পারে না।';
                     return;
                 }
                 if (!phoneRegex.test(data.mobile?.trim()) || !phoneRegex.test(data.whatsapp?.trim())) {
@@ -1514,9 +1604,11 @@
                 try {
                     const formBody = new URLSearchParams();
                     for (const key in data) {
-                        formBody.append(key, data[key]);
+                        formBody.append(key, typeof data[key] === 'string' ? data[key].trim() : data[key]);
                     }
 
+                    // Google Apps Script Web App-এ CORS response সবসময় পাওয়া যায় না,
+                    // তাই no-cors ব্যবহার করা হয়েছে। Network-level error হলে তবেই failure দেখানো হবে।
                     await fetch(SCRIPT_URL, {
                         method: 'POST',
                         mode: 'no-cors',
